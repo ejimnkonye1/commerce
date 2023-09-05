@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
+    
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,5 +46,8 @@
   "devDependencies": {
     "file-loader": "^6.2.0",
     "react-router-dom": "^6.15.0"
-  }
+  },
+  "homepage": "https://ejimnkonye1.github.io/commerce"
+
+  
 }
