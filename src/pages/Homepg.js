@@ -27,7 +27,7 @@ function MyHome() {
 
     return (
       <section>
-        <div className="container" id="hom"   >
+        <div className="container mb-5" id="hom"   >
   <div className="row">
     <div className="col">
       <div className="rounded">
@@ -37,7 +37,7 @@ function MyHome() {
           className="img-fluid"
           data-aos={currentAnimation}
           alt="home"
-          style={{ maxHeight: "430px", width: "100%" }}
+          style={{ maxHeight: "400px", width: "100%" }}
         />
       </div>
     </div>

@@ -2,41 +2,35 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import initialProducts from "./productimg";
 
-
-function Products() {
+function SearchResult() {
   const [currentProducts, setCurrentProducts] = useState(initialProducts);
+  const [searchQuery, setSearchQuery] = useState("");
   
 
-
-
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    // Filter the products based on the search query
+    const filteredProducts = initialProducts.filter((product) =>
+      product.name.toLowerCase().includes(query)
+    );
+    setCurrentProducts(filteredProducts);
+    setSearchQuery(query);
+  };
 
   return (
-    <section className="">
-      
-    <div className="container mt-5 bg-white ">
-      
-    <div className="">
-           <div className="d-flex justify-content-between">
-             <h3 className="" >Featured product</h3>
-             
-           
-         
-           
-             <div className="d-flex justify-content-center">
-      <Link  to="/Shop" className="btn text-white text-center bg-success" >
-        
-        VIEW ALL
-        
-      </Link>
-      </div>
-
-           </div>
-   </div>
-         </div>
-       <section className="bg-light p-1">
-       <div className="container mt-5  " id="pro"  >
+    <div>
+      <div className="container mt-5" id="pro">
         <div className="row">
-        {currentProducts.map((product, index) => (
+          <div className="col-md-12 mb-4">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search products"
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </div>
+          {currentProducts.map((product, index) => (
             <div className="col-md-4 mb-4 col-lg-3 col-sm-6 d-flex" key={index}>
               <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card">
                 <div className="border-bottom pb-2 d-flex justify-content-center">
@@ -61,12 +55,8 @@ function Products() {
           ))}
         </div>
       </div>
-      </section>
-      
-   
-    </section>
-  
+    </div>
   );
 }
 
-export default Products;
+export default SearchResult;

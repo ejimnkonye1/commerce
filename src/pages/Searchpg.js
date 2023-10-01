@@ -1,43 +1,26 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import initialProducts from "./productimg";
+import { Link } from "react-router-dom";
+function SearchPage() {
+  const { query } = useParams();
+  const [currentProducts, setCurrentProducts] = useState([]);
 
-
-function Products() {
-  const [currentProducts, setCurrentProducts] = useState(initialProducts);
-  
-
-
-
+  useEffect(() => {
+    const filteredProducts = initialProducts.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setCurrentProducts(filteredProducts);
+  }, [query]);
 
   return (
-    <section className="">
-      
-    <div className="container mt-5 bg-white ">
-      
-    <div className="">
-           <div className="d-flex justify-content-between">
-             <h3 className="" >Featured product</h3>
-             
-           
-         
-           
-             <div className="d-flex justify-content-center">
-      <Link  to="/Shop" className="btn text-white text-center bg-success" >
-        
-        VIEW ALL
-        
-      </Link>
-      </div>
-
-           </div>
-   </div>
-         </div>
-       <section className="bg-light p-1">
-       <div className="container mt-5  " id="pro"  >
+    <div>
+      <div className="container mt-5">
+        <h2 className="mb-4">Search Results for: {query}</h2>
         <div className="row">
-        {currentProducts.map((product, index) => (
-            <div className="col-md-4 mb-4 col-lg-3 col-sm-6 d-flex" key={index}>
+          {currentProducts.map((product, index) => (
+            <div className="col-md-4 mb-4 col-lg-3 col-sm-6" key={index}>
+              {/* Display product details here */}
               <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card">
                 <div className="border-bottom pb-2 d-flex justify-content-center">
                   {/* Use Link to navigate to the product details page */}
@@ -61,12 +44,8 @@ function Products() {
           ))}
         </div>
       </div>
-      </section>
-      
-   
-    </section>
-  
+    </div>
   );
 }
 
-export default Products;
+export default SearchPage;

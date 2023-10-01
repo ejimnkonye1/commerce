@@ -46,8 +46,7 @@
   "devDependencies": {
     "file-loader": "^6.2.0",
     "react-router-dom": "^6.15.0"
-  },
-  "homepage": "https://ejimnkonye1.github.io/commerce"
+  }
 
   
 }

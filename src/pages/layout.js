@@ -37,7 +37,7 @@ function Layout() {
           className="img-fluid"
           data-aos={currentAnimation}
           alt="home"
-          style={{ maxHeight: "430px", width: "100%" }}
+          style={{ maxHeight: "400px", width: "100%" }}
         />
       </div>
     </div>

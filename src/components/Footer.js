@@ -12,7 +12,7 @@ import {
 function Footer () {
     return (
 
-    <footer className="footer mt-4 bg-light " id="abt">
+    <footer className="footer mt-4 bg-light border-top" id="abt">
   <div className="container text-center">
     <div className="row">
       <div className="col-md-12">
@@ -35,22 +35,22 @@ function Footer () {
             <h4 id="ct">Connect with Us</h4>
             <div className="social-icons p-2 ">
               <a href="https://facebook.com/yourhandle" className="social-icon ">
-                <FontAwesomeIcon icon={faFacebook} size="2x" className="m-1" />
+                <FontAwesomeIcon icon={faFacebook}  className="m-1" />
               </a>
               <a href="https://instagram.com/yourhandle" className="social-icon">
-                <FontAwesomeIcon icon={faInstagram} size="2x" className="m-1"/>
+                <FontAwesomeIcon icon={faInstagram}  className="m-1"/>
               </a>
               <a href="https://twitter.com/yourhandle" className="social-icon">
-                <FontAwesomeIcon icon={faTwitter}  size="2x" className="m-1"/>
+                <FontAwesomeIcon icon={faTwitter}   className="m-1"/>
               </a>
               <a href="https://tiktok.com/yourhandle" className="social-icon">
-                <FontAwesomeIcon icon={faTiktok}  size="2x" className="m-1"/>
+                <FontAwesomeIcon icon={faTiktok}   className="m-1"/>
               </a>
               <a href="https://whatsapp.com/yournum" className="social-icon">
-                <FontAwesomeIcon icon={faWhatsapp}  size="2x" className="m-1"/>
+                <FontAwesomeIcon icon={faWhatsapp}   className="m-1"/>
               </a>
               <a href="https://threads.com/yourhandle" className="social-icon">
-                <FontAwesomeIcon icon={faThreads}  size="2x" className="m-1"/>
+                <FontAwesomeIcon icon={faThreads}   className="m-1"/>
               </a>
             </div>
           </div>
