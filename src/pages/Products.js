@@ -32,24 +32,10 @@ useEffect(() =>{
     <section className="">
       
     <div className="container mt-5 bg-white ">
-      
-    <div className="">
-           <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between">
              <h3 className="" >Featured product</h3>
-             
-           
-         
-           
-             <div className="d-flex justify-content-center">
-      <Link  to="/Shop" className="btn text-white text-center bg-success" >
-        
-        VIEW ALL
-        
-      </Link>
-      </div>
-
            </div>
-   </div>
+   
          </div>
        <section className="bg-light p-1">
        <div className="container mt-5  " id="pro"  >
@@ -83,7 +69,13 @@ useEffect(() =>{
         </div>
       </div>
       </section>
-      
+      <div className="d-flex justify-content-center bg-light">
+      <Link  to="/Shop" className="btn text-white text-center bg-success mb-3" >
+        
+        VIEW ALL
+        
+      </Link>
+      </div>
    
     </section>
   
