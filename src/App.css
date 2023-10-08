@@ -8,4 +8,20 @@
 .navbar-section {
     margin-top: 50px; /* Adjust the value to your desired spacing */
   }
- 
+  .trash-icon {
+    /* Initial color (red) */
+    color: red;
+    /* Transition to blue color over 0.3 seconds */
+    transition: color 0.3s;
+  }
+  
+  .trash-icon:hover {
+    /* Color on hover (blue) */
+    color: blue;
+  }
+  .star-icon {
+    color: white;
+    background: none;
+    text-shadow: 1px 1px  rgb(224, 212, 212); /* Add a subtle black text shadow */
+  }
+  

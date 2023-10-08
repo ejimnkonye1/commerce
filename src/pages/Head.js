@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import Navbarsm from "../components/nav1";
-function Head() {
+function Head({ cartItems }) {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -14,7 +14,15 @@ function Head() {
     if (query) {
       navigate(`/search/${query}`);
     }
+     // Function to count the number of items in the cart
+
+
   };
+ // Function to count the number of items in the cart
+ // Calculate the number of items in the cart
+ const cartItemCount = cartItems.length;
+ console.log('Cart Item Count:', cartItemCount); 
+
 
  return (
   
@@ -69,20 +77,23 @@ function Head() {
         <ul className="navbar-nav mx-auto justify-content-between">
    
           <li className="nav-item">
-            <a className="nav-link" href="#"  >
+            <a className="nav-link" href="/account"  >
             <i class="fas fa-sign-in-alt"></i>  signup
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#" >
+            <a className="nav-link" href="/account" >
             <i class="fas fa-login"></i>Login
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"  >
-          <i class="fas fa-shopping-cart"></i> Cart
-           </a>
-         </li>          
+       <li className="nav-item">
+                <Link to="/cart" className="nav-link">
+                  <i className="fas fa-shopping-cart"></i> Cart{" "}
+                  {cartItemCount > 0 && (
+                    <span className="">{cartItemCount}</span>
+                  )}
+                </Link>
+              </li>
         </ul>
         </div>
       </div>

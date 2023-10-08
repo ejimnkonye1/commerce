@@ -9,7 +9,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Products from "./Products";
 import Tools from "../Tools";
-function Layout() {
+function Layout({ cartItems, setCartItems }) {
     const images = [images1, images2,images4, images5 ];
     const animationNames = ["zoom-in", "fade-right", "zoom-in", "fade-up"];
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,7 +20,7 @@ function Layout() {
       Aos.init();
         const timeout = setTimeout(() => {
             setCurrentImageIndex((currentImageIndex + 1) % images.length);
-        }, 5000);
+        }, 3000);
 
         return () => clearTimeout(timeout);
     }, [currentImageIndex]);
@@ -43,7 +43,8 @@ function Layout() {
     </div>
   </div>
 </div>
-<Products />
+<Products cartItems={cartItems} setCartItems={setCartItems} />
+
 <Tools />
    </section>           
             

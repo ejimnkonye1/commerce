@@ -10,16 +10,16 @@ function Tools() {
       
       <div className="row">
         
-        
+      <h5>Tutorials</h5>
         <div className="col-md-4 col-lg-3 mb-4 ">
-        <h5>Tutorials</h5>
+       
         <div className="">
         <div className=" d-flex justify-content-center ">
           <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
           </div>
           <div className="card-body">
           
-          <p className="card-text">How to link to your phone</p>
+          <p className="card-text"><a href="https://www.youtube.com/watch?v=VIDEO_ID" target="blank" style={{textDecoration:"none"}}>How to link to your phone</a></p>
           </div>
           </div>
         </div>
@@ -30,8 +30,8 @@ function Tools() {
           <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
           </div>
           <div className="card-body">
-          <p className="card-title">WIFI</p>
-          <p className="card-text">Gps tracker gf09</p>
+          
+          <p className="card-text"><a href="https://www.youtube.com/watch?v=VIDEO_ID" target="blank" style={{textDecoration:"none"}}>How to link to your phone</a></p>
           </div>
           </div>
         </div>
@@ -41,8 +41,8 @@ function Tools() {
           <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
           </div>
           <div className="card-body">
-          <p className="card-title">WIFI</p>
-          <p className="card-text">Gps tracker gf09</p>
+          
+          <p className="card-text"><a href="https://www.youtube.com/watch?v=VIDEO_ID" target="blank" style={{textDecoration:"none"}}>How to link to your phone</a></p>
           </div>
           </div>
         </div>
@@ -52,8 +52,8 @@ function Tools() {
           <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
           </div>
           <div className="card-body">
-          <p className="card-title">WIFI</p>
-          <p className="card-text">Gps tracker gf09</p>
+          
+          <p className="card-text"><a href="https://www.youtube.com/watch?v=VIDEO_ID" target="blank" style={{textDecoration:"none"}}>How to link to your phone</a></p>
           </div>
           </div>
         </div>

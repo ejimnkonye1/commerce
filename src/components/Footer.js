@@ -12,8 +12,8 @@ import {
 function Footer () {
     return (
 
-    <footer className="footer mt-4 bg-light border-top" id="abt">
-  <div className="container text-center">
+    <footer className="footer mt-4 bg-light border-top " style={{marginBottom:'0'}}  id="abt">
+  <div className="container text-center ">
     <div className="row">
       <div className="col-md-12">
         <h3>About Us</h3>

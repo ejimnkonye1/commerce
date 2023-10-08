@@ -3,8 +3,23 @@ import initialProducts from './productimg';
 import { Link } from 'react-router-dom';
 import ProductDetails from './Productdetails';
 
-function Shop() {
- 
+function Shop({ cartItems, setCartItems }) {
+
+const handleAddToCart = (product) => {
+  // Check if the product is already in the cart
+  const existingProduct = cartItems.find((item) => item.name === product.name);
+
+  if (existingProduct) {
+    // If the product exists in the cart, increase its quantity by 1
+    existingProduct.quantity += 1;
+    setCartItems([...cartItems]);
+  } else {
+    // If the product is not in the cart, add it with a quantity of 1
+    product.quantity = 1;
+    setCartItems([...cartItems, product]);
+  }
+};
+  
   const [currentProducts, setCurrentProducts] = useState(initialProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6; // Number of products to display per page
@@ -35,11 +50,11 @@ function Shop() {
 
     <section>
       <div className="container-fluid bg-light">
-        <h5 className="p-5 m-0">SHOP</h5>
+        <h5 className="p-5 m-0 mt-5">SHOP</h5>
       </div>
-      <div className="container">
-        <div className="row p-5">
-          <section className="bg-white d-flex justify-content-end">
+      <div className="container  ml-auto ">
+        <div className="row ">
+          <section className="ml-5 mt-5  d-flex justify-content-end">
             {/* Apply the 'container' class directly to the product container */}
             <div className="container" id="pro">
               <div className="row">
@@ -59,14 +74,16 @@ function Shop() {
                       </div>
                       <div className="card-body">
                         <p className="card-title">{product.name}</p>
-                        <p className="card-text text-success">
-                          <strong>{product.price}</strong>
+                        <p className="card-text text-primary">
+                          <strong>NGN{product.price}</strong>
                         </p>
                         <div className="text-center">
                           <Link to={`/product/${index}`}>
                             <p className="btn btn-success">View Details</p>
                           </Link>
+                          
                         </div>
+                        <button className='btn btn-primary ' onClick={() => handleAddToCart(product)}>Add to Cart</button>
                       </div>
                     </div>
                   </div>
@@ -98,6 +115,7 @@ function Shop() {
           </li>
         </ul>
       </nav>
+      
     </section>
   );
 }

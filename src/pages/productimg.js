@@ -10,15 +10,15 @@ import product4 from "../images/5mp 360 degree cctv.jpg";
 
 
 const initialProducts = [
-  { image: product1, name: "V380 MINI WIFI", price: "NGN6500.00", description: 'The phrasal sequence of the  Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum text'},
+  { image: product1, name: "V380 MINI WIFI", price: "6500.00", description: 'The phrasal sequence of the  Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum text',  quantity: 0},
  
-  { image: product2, name: "1MP SURVEILLANCE", price: "NGN10000.00", description:"The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal " },
-  { image: product3, name: "A9 MiNI CAMERA", price: "NGN8000.00",description:'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum ' },
-  { image: product4, name: "360 DEGREE CCTV", price: "NGN1800.00", description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal ' },
-  { image: product5, name: "4G CAMERA", price: "NGN8000.00" , description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence '},
-  { image: product6, name: "2MP SURVILLANCE", price: "NGN1800.00", description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum text' },
-  { image: product7, name: "360 DEGREE ROTATION", price: "NGN86000.00", description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal '},
-  { image: product8, name: "CAR GPS TRACKER", price: "NGN6500.00" , description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasa'},
+  { image: product2, name: "1MP SURVEILLANCE", price: "10000.00", description:"The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal ",  quantity: 0 },
+  { image: product3, name: "A9 MiNI CAMERA", price: "8000.00",description:'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum ',  quantity: 0 },
+  { image: product4, name: "360 DEGREE CCTV", price: "1800.00", description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal ',  quantity: 0 },
+  { image: product5, name: "4G CAMERA", price: "8000.00" , description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence ',  quantity: 0},
+  { image: product6, name: "2MP SURVILLANCE", price: "1800.00", description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum text', quantity: 0 },
+  { image: product7, name: "360 DEGREE ROTATION", price: "86000.00", description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal ',  quantity: 0},
+  { image: product8, name: "CAR GPS TRACKER", price: "6500.00" , description: 'The phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasal sequence of the Lorem Ipsum textThe phrasa', quantity: 0},
 
 ];
 

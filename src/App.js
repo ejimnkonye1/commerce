@@ -1,54 +1,61 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Head from './pages/Head';
+import Navbarsm from './components/nav1';
 import Navbar from './components/Navbar';
-
-
 import Account from './pages/Account';
 import Footer from './components/Footer';
 import BottomNavbar from './components/bottomnav';
-
 import Shop from './pages/Shop';
 import MyHome from './pages/Homepg';
 import Tools from './Tools';
-import Navbarsm from './components/nav1';
 import Layout from './pages/layout';
 import ProductDetails from './pages/Productdetails';
-import Cart from './pages/cart';
-import test from './pages/test';
-import Testing from './pages/test';
-import Search from './pages/Search';
-import SearchResults from './pages/Searchresult';
+import Cart from './pages/cart'; 
 import SearchPage from './pages/Searchpg';
+import Products from './pages/Products';
+import ResetPassword from './pages/Resetpassword';
+import PasswordResetSent from './pages/Resetmessage';
+import AccountDashboard from './pages/AccountDashboard';
+import Orders from './pages/Orders';
+import MenuItem from './pages/Menuitempg';
+
+
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [cartItems, setCartItems] = useState([]); // Define cart state
+  
+
   return (
     <div className="App">
       <BrowserRouter>
-      <Head searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <Head searchQuery={searchQuery} setSearchQuery={setSearchQuery} cartItems={cartItems}  />
         <Navbarsm />
-        <Testing />
         <Navbar />
-     
+        {/* <Cart cartItems={cartItems} setCartItems={setCartItems} /> */}
+    
         <Routes>
-          
-          <Route path='/' element={<Layout />} />
-       
-        <Route path="/search/:query" element={<SearchPage />} />
-          <Route path='/home' element={<MyHome/>} />
+          <Route path='/' element={<Layout  cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path='/' element={<Products cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path="/search/:query" element={<SearchPage />} />
+          <Route path="/menuitem/:query" element={<MenuItem />} />
+          <Route path='/home' element={<Layout  cartItems={cartItems} setCartItems={setCartItems}/>} />
           <Route path="/account" element={<Account />} />
-          <Route path="/shop"    element={<Shop />} />
+          <Route path="/shop" element={<Shop cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path='/learn' element={<Tools />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-      
-        </Routes>
+          <Route path="/product/:id" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/reset-message' element={< PasswordResetSent/>} />
+          <Route path='/dashboard' element={<AccountDashboard />} />
         
+          <Route path="/orders" element={<Orders />} />
+       
+        </Routes>
         <Footer />
         <BottomNavbar />
       </BrowserRouter>
-
     </div>
   );
 }

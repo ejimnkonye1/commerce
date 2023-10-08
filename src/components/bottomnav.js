@@ -20,7 +20,7 @@ function BottomNavbar() {
               </Link>
             </li>
             <li className="nav-item  text-center"> {/* Added 'flex-fill' class */}
-              <a href="#" className="nav-link">
+              <a href="/cart" className="nav-link">
                 <i className="fas fa-shopping-cart"></i>
                 <div>Cart</div>
               </a>
