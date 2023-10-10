@@ -1,0 +1,23 @@
+
+
+
+@media (max-width: 768px) {
+    .container{
+        margin-top: 20px;
+       
+    }
+    input {
+        width: 100%; /* Make inputs full width on phone screens */
+      }
+      .phone-form {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .phone-form div {
+        margin-bottom: 10px; /* Adjust the margin as needed for spacing */
+      }
+      .save-btn{
+        margin-bottom: 10px;
+      }
+}

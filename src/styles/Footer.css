@@ -1,0 +1,59 @@
+
+
+ul {
+    list-style: none;
+  }
+  
+  /* Add margin and padding to <li> elements for spacing */
+  ul li {
+    margin-bottom: 10px;
+    padding-left: 0; /* Remove left padding to align with the text */
+  }
+ .lin a{
+    color: black;
+    transition: 0.3s;
+  }
+ .lin a:hover{
+    padding-left: 10px;
+    color: blue;
+  }
+
+/* Media query for smaller screens (phones) */
+@media (max-width: 768px) {
+    .container {
+       display: grid;
+       justify-items: start;
+       
+    }
+  
+    .lin.col-md-4 {
+   display: grid;
+   justify-content: start;
+      }
+    
+      .lin.col-md-4 ul,
+      .lin.col-md-4 ol {
+        padding-left: 0; /* Remove the padding */
+        list-style: none; /* Remove bullets/numbers */
+      }
+    
+      .lin.col-md-4 ul li {
+      
+      }
+    .col-md-4{
+        margin-bottom: 10px;
+    }
+    .ct {
+        text-align: center;
+      }
+      
+      .ct .social-icons {
+        display: flex;
+        justify-content: center;
+      }
+      
+      .ct h5 {
+        text-align: center;
+      }
+  }
+  

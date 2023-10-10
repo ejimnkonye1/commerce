@@ -70,14 +70,14 @@ function MyAccount() {
   };
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       {/* Your account page content */}
       <div className="row mt-5">
         <h5 className="mt-3"> <strong>MY Account</strong></h5>
         <div className="col-md-6 mt-5">
           <div className="login-form p-4 border">
             <h2 className="mb-4">Login</h2>
-            <form>
+            <form onSubmit={handleSignIn}>
               <div className="form-group">
                 <label htmlFor="email">Email address:</label>
                 <input
@@ -87,6 +87,7 @@ function MyAccount() {
                   id="email"
                   placeholder="Enter your email"
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -98,17 +99,20 @@ function MyAccount() {
                   id="password"
                   placeholder="Enter your password"
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
-              <div className="form-check mb-3">
+              {/* <div className="form-check mb-3">
                 <input type="checkbox" className="form-check-input" id="rememberMe" />
                 <label className="form-check-label" htmlFor="rememberMe">
                   Remember me
                 </label>
-              </div>
-              <button type="" onClick={handleSignIn} className="btn btn-primary btn-block">
+              </div> */}
+              <div className='mt-3'>
+              <button type="submit"  className="btn btn-primary btn-block mb-3">
                 Login
               </button>
+              </div>
             </form>
             <div className="text-center mt-3">
               <a style={{textDecoration:'none'}} href="/reset-password">Lost your password?</a>
@@ -119,7 +123,7 @@ function MyAccount() {
         <div className="col-md-6 mt-5">
           <div className="signup-form p-4 border">
             <h2 className="mb-4">Register</h2>
-            <form>
+            <form onSubmit={handleSignUp}>
               <div className="form-group">
                 <label htmlFor="email">Email address:</label>
                 <input
@@ -141,21 +145,22 @@ function MyAccount() {
                   className="form-control form-control-sm"
                   id="password"
                   placeholder="Enter your password"
-                  required  minLength={'8'}
+                  required  
+                  minLength={'8'}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="form-check mb-3">
+              {/* <div className="form-check mb-3">
                 <input type="checkbox" className="form-check-input" id="rememberMe" />
                 <label className="form-check-label" htmlFor="rememberMe">
                   I agree with the <a style={{ textDecoration: "none" }} href="#">privacy policy</a>.
                 </label>
-              </div>
-              <div className="">
+              </div> */}
+              <div className="mt-3">
               <button
   type="submit"
-  onClick={handleSignUp}
-  className="btn btn-success btn-block"
+
+  className="btn btn-success btn-block mb-4"
  // Disable the button if the form is not valid
 >
   Register

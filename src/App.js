@@ -20,6 +20,10 @@ import PasswordResetSent from './pages/Resetmessage';
 import AccountDashboard from './pages/AccountDashboard';
 import Orders from './pages/Orders';
 import MenuItem from './pages/Menuitempg';
+import BillingAddressForm from './pages/billingad';
+import AccountDetailsForm from './pages/accountdetails';
+import Checkout from './pages/checkout';
+
 
 
 function App() {
@@ -51,7 +55,9 @@ function App() {
           <Route path='/dashboard' element={<AccountDashboard />} />
         
           <Route path="/orders" element={<Orders />} />
-       
+          <Route path="/address" element={<BillingAddressForm />} />
+          <Route path="/acct-details" element={<AccountDetailsForm />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <Footer />
         <BottomNavbar />

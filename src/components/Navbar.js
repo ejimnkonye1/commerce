@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import '../styles/custom.css';
+
 import initialProducts from '../pages/productimg';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';

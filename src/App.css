@@ -24,4 +24,6 @@
     background: none;
     text-shadow: 1px 1px  rgb(224, 212, 212); /* Add a subtle black text shadow */
   }
-  
+a {
+  text-decoration: none !important;
+}

@@ -1,7 +1,33 @@
 // Cart.js
 import React from 'react';
+import { useState, useEffect } from 'react';
+import "../styles/cart.css";
 
 function Cart({ cartItems, setCartItems }) {
+
+
+
+  useEffect(() => {
+    // Retrieve cart items from localStorage when the component mounts
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItems(storedCartItems);
+  }, []);
+
+  useEffect(() => {
+    // Update localStorage whenever cartItems change
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    // Retrieve cart items from localStorage when the component mounts
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItems(storedCartItems);
+  }, []);
+
+  useEffect(() => {
+    // Update localStorage whenever cartItems change
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
   const handleRemoveFromCart = (index) => {
     const updatedCartItems = [...cartItems];
     updatedCartItems.splice(index, 1);
@@ -54,11 +80,12 @@ const updateQuantity = (item, increment) => {
 
   return (
     <div className='mt-5'>
-    <div className='' style={{marginTop:'50px'}}>
-      <h3 className='ml-4' style={{marginLeft:'70px'}}> Cart</h3>
-    </div>
+    
       <div className="container mt-5">
-  <table className="table">
+      <div className='mb-3'>
+      <h3 className='ml-4 mt-3'> Cart</h3>
+      </div>
+  <table className="table d-none d-md-table">
     <thead>
       <tr className='text-center'>
         <th className='border'>Image</th>
@@ -125,56 +152,72 @@ const updateQuantity = (item, increment) => {
       ))}
     </tbody>
   </table>
-  <div>
-      <p>Total Price: NGN{calculateTotalPrice()}</p>
-    </div>
-    <div className="cart-totals">
-        <table>
-          <tbody>
-            <tr>
-              <td>Subtotal</td>
-              <td>₦{calculateSubtotal()}</td>
-            </tr>
-            <tr>
-              <td>Shipping</td>
-              <td>
-              <div>
-          <input
-            type="checkbox"
-            id="localDeliveryCheckbox"
-          
+  <table className="table d-md-none"> {/* Display on small screens */}
+  <thead>
+    <tr className='text-center'>
+      <th className='border'>Image</th>
+      <th className='border'>Name</th>
+      <th className='border'>Total</th>
+    
+    </tr>
+  </thead>
+  <tbody className=''>
+    {cartItems.map((item, index) => (
+      <tr key={index}>
+        <td className='border'>
+          <img
+            src={item.image}
+            className="img-fluid"
+            style={{ width: '100px' }}
+            alt={item.name}
           />
-          <label htmlFor="localDeliveryCheckbox">Home Delivery(1-3days): ₦3,000.00</label>
-        </div>
-                
-                  
-              </td>
+        </td>
+        <td className='border'>
+          <div className='mt-4'>
+          {item.name}
+          </div>
+          <div className='d-flex justify-content-center align-items-center mt-3'>
+         <div className='d-flex justify-content-center align-items-center' style={{border:'1px solid blue',
+         borderRadius:'5px',width:'90px',
+        
+        }}>
+         <div className='' style={{marginRight:'10px', cursor:'pointer'}}  onClick={() => updateQuantity(item, -1)}>
+         -
+         </div>
+              <div className='m-2'>
+              {item.quantity}
+              </div>
+              <div className='' style={{marginLeft:'10px', cursor:'pointer'}} onClick={() => updateQuantity(item, 1)}>
+              +
+              </div>
+              
+         </div>
+         <div className='d-flex justify-content-center align-items-center mb-2' style={{marginLeft:'10px'}}>
+         <i    onClick={() => handleRemoveFromCart(index)} className="fas fa-times   trash-icon"></i>
             
+         </div>
+         </div>
+        </td>
+        <td className='border'>
+          <div className='mt-4 text-primary'>
+          NGN{calculateUpdatedPrice(item)}
+          </div>
           
-            </tr>
-            <tr>
-            <td>
-                <div style={{marginLeft:'150px'}}>
-              <input
-            type="checkbox"
-            id="localDeliveryCheckbox"
-          
-          />
-            
-          <label htmlFor="localDeliveryCheckbox">LOcal Delivery</label>
-        </div>
-               
-              </td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>₦{calculateTotal()}</td>
-            </tr>
-          </tbody>
-        </table>
+        </td>
        
-        <p className="btn btn-danger mt-3">proceed to checkout</p>
-      </div>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+  <div>
+  <p className='text-danger'>Total Price: NGN{calculateTotalPrice()}</p>
+    </div>
+   <div className='d-flex justify-content-end'>
+  
+   <p className="btn btn-danger mt-3">Proceed to checkout</p>
+   </div>
+   
 </div>
 
 

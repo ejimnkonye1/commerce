@@ -23,7 +23,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mb-4 mt-3">
       <div className="row mt-5">
         <div className="col-md-6 offset-md-3">
           <div className="reset-password-form p-4 border">

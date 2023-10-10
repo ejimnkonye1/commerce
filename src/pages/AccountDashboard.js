@@ -1,21 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../Firebase"; // Import Firebase auth object
 
 const AccountDashboard = () => {
+  const [user, setUser] = useState(null); // Store user information
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Add a Firebase authentication listener
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User is signed in
+        setUser(authUser);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  const handleSignOut = () => {
+    // Sign out the user
+    auth.signOut().then(() => {
+      // User signed out successfully
+      setUser(null); // Clear user information
+      navigate('/account')
+    });
+  };
   return (
     <div className="container">
-      <h2>My Account</h2>
+      
       <div className="row mt-5">
+      <h5 className="mb-3"> <strong>MY Account</strong></h5>
         <div className="col-md-3">
           {/* Sidebar with links */}
           <ul className="list-group">
             <li className="list-group-item"><a href="/dashboard">Dashboard</a></li>
             <li className="list-group-item"><a href="/orders">Orders</a></li>
-            <li className="list-group-item"><a href="/downloads">Downloads</a></li>
-            <li className="list-group-item"><a href="/addresses">Addresses</a></li>
-            <li className="list-group-item"><a href="/payment-methods">Payment Methods</a></li>
-            <li className="list-group-item"><a href="/paypal-payments">PayPal Payments</a></li>
-            <li className="list-group-item"><a href="/account-details">Account Details</a></li>
-            <li className="list-group-item"><a href="/logout">Logout</a></li>
+            <li className="list-group-item"><a href="/address">Address</a></li>
+         
+        
+            <li className="list-group-item"><a href="/acct-details">Account Details</a></li>
+            <li className="list-group-item"><a href="/account">Logout</a></li>
           </ul>
         </div>
         <div className="col-md-9">
@@ -27,7 +57,11 @@ const AccountDashboard = () => {
             <li>Manage your shipping and billing addresses</li>
             <li>Edit your password and account details</li>
           </ul>
-          <p>Hello [User's Name] (not [User's Name]? <a href="/logout">Log out</a>)</p>
+          {user ? (
+            <p>Hello {user.email} (not {user.email}? <Link to="/account" onClick={handleSignOut}>Log out</Link>)</p>
+          ) : (
+            <p>You are not logged in.</p>
+          )}
         </div>
    
       </div>

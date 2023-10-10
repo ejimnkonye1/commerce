@@ -9,6 +9,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Products from "./Products";
 import Tools from "../Tools";
+import "../styles/layout.css";
 function Layout({ cartItems, setCartItems }) {
     const images = [images1, images2,images4, images5 ];
     const animationNames = ["zoom-in", "fade-right", "zoom-in", "fade-up"];
@@ -30,7 +31,7 @@ function Layout({ cartItems, setCartItems }) {
         <div className="container" id="hom"   >
   <div className="row">
     <div className="col">
-      <div className="rounded">
+      <div className="rounded ">
         <img
           src={currentImage} 
           
