@@ -15,7 +15,6 @@ function Navbarsm() {
       navigate(`/search/${query}`);
     }
   };
-   
     return (
       <div className="d-lg-none fixed-top">
         

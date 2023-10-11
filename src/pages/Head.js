@@ -91,7 +91,6 @@ function Head({ cartItems }) {
                 Search
               </button>
             </form>
-
             <ul className="navbar-nav mx-auto justify-content-between">
               {/* Conditionally render user email or sign-in/sign-up links */}
               {user ? (

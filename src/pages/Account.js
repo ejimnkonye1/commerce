@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'; // Import the necessary functions
 import { auth } from '../Firebase'; // Import the Firebase auth object
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 function MyAccount() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const navigate = useNavigate(); // Initialize the navigate function
-
+  const [error, setError] = useState(null); // State variable for error message
 
   const validateForm = () => {
     // Get the values of email and password from state
@@ -48,6 +48,7 @@ function MyAccount() {
         })
         .catch((error) => {
           console.error('Sign-up error:', error);
+          setError(error.message); // Set the error message
         });
     }
   };
@@ -66,15 +67,19 @@ function MyAccount() {
       .catch((error) => {
         // Handle errors
         console.error('Sign-in error:', error);
+        setError(error.message); // Set the error message
       });
   };
 
   return (
     <div className="container mb-5">
       {/* Your account page content */}
+      
       <div className="row mt-5">
         <h5 className="mt-3"> <strong>MY Account</strong></h5>
+        {error && <div className=" container alert alert-danger">{error}</div>} {/* Display error message */}
         <div className="col-md-6 mt-5">
+          
           <div className="login-form p-4 border">
             <h2 className="mb-4">Login</h2>
             <form onSubmit={handleSignIn}>
@@ -113,9 +118,10 @@ function MyAccount() {
                 Login
               </button>
               </div>
+           
             </form>
             <div className="text-center mt-3">
-              <a style={{textDecoration:'none'}} href="/reset-password">Lost your password?</a>
+              <Link style={{textDecoration:'none'}} to="/reset-password">Lost your password?</Link>
             </div>
           </div>
         </div>
@@ -158,18 +164,16 @@ function MyAccount() {
               </div> */}
               <div className="mt-3">
               <button
-  type="submit"
-
-  className="btn btn-success btn-block mb-4"
- // Disable the button if the form is not valid
->
-  Register
-</button>
+               type="submit"
+                className="btn btn-success btn-block mb-4">
+                Register
+               </button>
 
               </div>
+         
             </form>
             <div className="text-center mt-3">
-              {/* Your registration success message or link */}
+             
             </div>
           </div>
         </div>

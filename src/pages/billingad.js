@@ -38,14 +38,23 @@ function BillingAddressForm() {
       <div className="col-md-3">
         {/* Sidebar with links */}
         <ul className="list-group">
-          <li className="list-group-item"><a href="/dashboard">Dashboard</a></li>
-      
-          <li className="list-group-item"><a href="/orders">Orders</a></li>
-          <li className="list-group-item"><a href="/address">Address</a></li>
-         
-          <li className="list-group-item"><a href="/acct-details">Account Details</a></li>
-          <li className="list-group-item"><a href="/account">Logout</a></li>
-        </ul>
+  <li className="list-group-item">
+    <Link to="/dashboard">Dashboard</Link>
+  </li>
+  <li className="list-group-item">
+    <Link to="/orders">Orders</Link>
+  </li>
+  <li className="list-group-item">
+    <Link to="/address">Address</Link>
+  </li>
+  <li className="list-group-item">
+    <Link to="/acct-details">Account Details</Link>
+  </li>
+  <li className="list-group-item">
+    <Link to="/account">Logout</Link>
+  </li>
+</ul>
+
       </div>
       <div className="col-md-9">
         {/* Content of the dashboard */}
