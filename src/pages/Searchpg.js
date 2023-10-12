@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import initialProducts from "./productimg";
 import { Link } from "react-router-dom";
+import '../styles/search.css'
 function SearchPage() {
   const { query } = useParams();
   const [currentProducts, setCurrentProducts] = useState([]);
@@ -15,8 +16,9 @@ function SearchPage() {
 
   return (
     <div>
+      <Link to={'/search'} >
       <div className="container mt-5">
-        <h3 className="mb-4"> Search Results for: "{query}" </h3> 
+        <h3 className="serach-result mb-4"> Search Results for: "{query}" </h3> 
         <div className="row">
           {currentProducts.map((product, index) => (
             <div className="col-md-4 mb-4 col-lg-3 col-sm-6" key={index}>
@@ -45,6 +47,7 @@ function SearchPage() {
           ))}
         </div>
       </div>
+      </Link>
     </div>
   );
 }

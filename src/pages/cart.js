@@ -1,7 +1,7 @@
 // Cart.js
 import React from 'react';
 import { useState, useEffect } from 'react';
-import "../styles/cart.css";
+
 
 function Cart({ cartItems, setCartItems }) {
 

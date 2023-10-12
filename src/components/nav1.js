@@ -33,7 +33,7 @@ function Navbarsm() {
               
               className="form-control"
               placeholder="Search"
-              aria-label="Search"
+              aria-label="I'm saerching for.."
               aria-describedby="basic-addon2"
               width={'100%'}
               value={searchQuery}

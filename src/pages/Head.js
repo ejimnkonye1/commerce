@@ -72,7 +72,7 @@ function Head({ cartItems }) {
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="I'm searching for.."
                 aria-label="Search"
                 value={searchQuery}
                 
