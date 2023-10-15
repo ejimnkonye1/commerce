@@ -17,7 +17,7 @@ function Navbarsm({ cartItems }) {
   const handleSearch = () => {
     const query = searchQuery.toLowerCase().trim();
     if (query) {
-      navigate(`/search/${query}`);
+      navigate(`/searchpg/${query}`);
     }
   };
   

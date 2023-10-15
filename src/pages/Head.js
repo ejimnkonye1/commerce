@@ -34,7 +34,7 @@ function Head({ cartItems, loading }) {
   const handleSearch = () => {
     const query = searchQuery.toLowerCase().trim();
     if (query) {
-      navigate(`/search/${query}`);
+      navigate(`/searchpg/${query}`);
     }
   };
 
@@ -75,6 +75,7 @@ function Head({ cartItems, loading }) {
 
       <div className=" d-flex justify-content-end">
         <form className="form d-flex " role="search">
+          <div>
           <input
             className="form-control me-2"
             type="search"
@@ -95,6 +96,7 @@ function Head({ cartItems, loading }) {
           >
             Search
           </button>
+          </div>
         </form>
         <ul className="navbar-nav mx-auto justify-content-between">
           {user ? (

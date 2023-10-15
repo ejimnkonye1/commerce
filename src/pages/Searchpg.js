@@ -16,7 +16,7 @@ function SearchPage() {
 
   return (
     <div>
-      <Link to={'/search/:query'} >
+    
       <div className="container mt-5">
         <h3 className="serach-result mb-4"> Search Results for: "{query}" </h3> 
         <div className="row">
@@ -47,7 +47,7 @@ function SearchPage() {
           ))}
         </div>
       </div>
-      </Link>
+   
     </div>
   );
 }

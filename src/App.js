@@ -80,7 +80,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout  cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path='/' element={<Products cartItems={cartItems} setCartItems={setCartItems} />} />
-          <Route path="/search/:query" element={<SearchPage />} />
+          <Route path="/searchpg/:query" element={<SearchPage />} />
           <Route path="/menuitem/:query" element={<MenuItem />} />
           <Route path='/home' element={<Layout  cartItems={cartItems} setCartItems={setCartItems}/>} />
           <Route path="/account">
