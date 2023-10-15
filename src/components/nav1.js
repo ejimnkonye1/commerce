@@ -4,7 +4,7 @@ import Logo from '../images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/nav.css';
 
-function Navbarsm({ cartItems }) {
+function Navbarsm({ cartItems, loading }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +23,11 @@ function Navbarsm({ cartItems }) {
   
   return (
     <div className="bot fixed-top border-bottom">
+       {loading ? (
+        <div className='loader-con'>
+          <div className="loader"></div>
+        </div>
+      ) : (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="d-flex justify-content-between">
           <div className="menubar" onClick={toggleMenu}>
@@ -92,7 +97,9 @@ function Navbarsm({ cartItems }) {
           </ul>
         </div>
       </nav>
+        )}
       <Outlet />
+    
     </div>
   );
 }
