@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { auth } from "./Firebase"; // Import Firebase auth object
 import './App.css';
 import Head from './pages/Head';
 import Navbarsm from './components/nav1';
@@ -23,20 +25,56 @@ import MenuItem from './pages/Menuitempg';
 import BillingAddressForm from './pages/billingad';
 import AccountDetailsForm from './pages/accountdetails';
 import Checkout from './pages/checkout';
+import Login from './pages/test';
+import Tablet from './components/tablet';
 
 
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [cartItems, setCartItems] = useState([]); // Define cart state
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // Loading state
   
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setUser(authUser);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  
+  if (isLoading) {
+    return (
+      <div className='loader-con'>
+      <div className="loader"></div>
+      </div>
+    );
+  }
   return (
+    <div >
+   
     <div className="App">
+   
       <BrowserRouter>
         <Head searchQuery={searchQuery} setSearchQuery={setSearchQuery} cartItems={cartItems}  />
-        <Navbarsm />
-        <Navbar />
+        <Navbarsm cartItems={cartItems}   />
+          <Tablet /> {/* Conditionally render Tablet */}
+         <Navbar /> {/* Conditionally render Navbar */}
         {/* <Cart cartItems={cartItems} setCartItems={setCartItems} /> */}
     
         <Routes>
@@ -45,7 +83,9 @@ function App() {
           <Route path="/search/:query" element={<SearchPage />} />
           <Route path="/menuitem/:query" element={<MenuItem />} />
           <Route path='/home' element={<Layout  cartItems={cartItems} setCartItems={setCartItems}/>} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account">
+          <Route path="/account" element={user ? <AccountDashboard /> : <Account />} />
+          </Route>
           <Route path="/shop" element={<Shop cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path='/learn' element={<Tools />} />
           <Route path="/product/:id" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} />} />
@@ -53,15 +93,16 @@ function App() {
           <Route path='/reset-password' element={<ResetPassword />} />
           <Route path='/reset-message' element={< PasswordResetSent/>} />
           <Route path='/dashboard' element={<AccountDashboard />} />
-        
           <Route path="/orders" element={<Orders />} />
           <Route path="/address" element={<BillingAddressForm />} />
           <Route path="/acct-details" element={<AccountDetailsForm />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/lll" element={<Login />} />
         </Routes>
         <Footer />
         <BottomNavbar />
       </BrowserRouter>
+    </div>
     </div>
   );
 }

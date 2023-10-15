@@ -6,7 +6,7 @@ function BottomNavbar({ cartItems }) {
 
 
   return (
-    <div className="d-lg-none fixed-bottom bg-white">
+    <div className="bot d-lg-none fixed-bottom bg-white bot">
       <div className="border-top">
         <ul className="nav nav-pills nav-justified">
           <li className="nav-item text-center">

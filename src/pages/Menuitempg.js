@@ -35,10 +35,7 @@ function MenuItem() {
                         alt={product.name}
                       />
                       {/* Add a cart icon inside the product image */}
-                      <div className="cart-icon">
                       
-                      <FontAwesomeIcon icon={faShoppingCart} size="8x" />
-                      </div>
                     </div>
                   </Link>
                 </div>

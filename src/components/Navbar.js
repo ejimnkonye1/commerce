@@ -6,20 +6,23 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const navigate = useNavigate();
-
+  const handleLinkClick = () => {
+    setLoading(true);
+  }
   const handleSearch = () => {
     const query = searchQuery.toLowerCase().trim();
     if (query) {
       navigate(`/search/${query}`);
     }
   };
+  
   const { query } = useParams();
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);

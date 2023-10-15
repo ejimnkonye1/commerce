@@ -27,3 +27,142 @@
 a {
   text-decoration: none !important;
 }
+.loader-con{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+}
+.loader {
+ 
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.menubar{
+  margin-top: 10px;
+}
+.bar{
+  width: 20px;
+  height: 3px;
+  background-color: rgb(137, 130, 130);
+  margin-bottom: 3px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .bot {
+    display: none;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    .bot {
+    display: none;
+    }
+    .tablet{
+      display: none;
+    }
+    }
+    @media only screen and (max-width: 767px) {
+      .big-screen{
+        display: none;
+      }
+
+    }
+        
+
+
+
+/* Media query for screens with a maximum width of 575px or less */
+@media (max-width: 575px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .menubar {
+    margin: 15px 0;
+    margin-left: 10px;
+   margin-top: 20px;
+  }
+
+  .search-form {
+    margin: 10px 0;
+  }
+
+  .input-group input[type="text"]  {
+   width: 300px;
+   outline: none;
+   border: none;
+   
+  }
+
+  .logo {
+    margin: 10px 0;
+    margin-top: 13px;
+    margin-left: 10px;
+  }
+
+  .cart-icon {
+    margin: 10px 0;
+    margin-left: 10px;
+  }
+}
+@media (max-width: 375px) {
+  .input-group input[type="text"]  {
+    width: 200px;
+    outline: none;
+    border: none;
+   }
+}
+@media (max-width: 414px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .input-group input[type="text"]  {
+    width: 200px;
+    outline: none;
+    border: none;
+   }
+   .menubar {
+    margin: 15px 0;
+    margin-right: 10px;
+   margin-top: 20px;
+  }
+  
+  .logo {
+    margin: 10px 0;
+    margin-top: 13px;
+    margin-right: 10px;
+  }
+  
+}
+/* Media query for tablet screens (768px to 1024px) */
+
+  @media (min-width: 575px) { 
+.bot{
+  display: none;
+}
+  }
+  .form-control:focus {
+    border-color: initial; /* Or you can use "transparent" or your preferred color */
+    box-shadow: none !important; /* This is to remove any shadow that might appear */
+  }

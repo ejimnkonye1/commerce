@@ -33,10 +33,26 @@ function Footer() {
           <div className="lin col-md-4">
             <h5>Quick Links</h5>
             <ul className="">
-              <li className=""><Link to="/">Home</Link></li>
-              <li><Link to="/learn">Learn</Link></li>
-              <li><Link to="/shop">Shop</Link></li>
-              <li><Link to="/my-account">My Account</Link></li>
+            <li className="">
+              <Link className="" to="/home">
+           Home
+              </Link>
+            </li>
+            <li className="">
+              <Link className="" to="/learn">
+           Learn
+              </Link>
+            </li>
+            <li className="">
+              <Link className="" to="/shop">
+           Shop
+              </Link>
+            </li>
+            <li className="">
+              <Link className="" to="/account">
+            My Account
+              </Link>
+            </li>
             </ul>
           </div>
           <div className="col-md-4 ct mb-5">

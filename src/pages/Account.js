@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'; // Import the necessary functions
 import { auth } from '../Firebase'; // Import the Firebase auth object
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-function MyAccount() {
+import Head from './Head';
+function MyAccount({loading}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
-  const navigate = useNavigate(); // Initialize the navigate function
-  const [error, setError] = useState(null); // State variable for error message
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
 
   const validateForm = () => {
-    // Get the values of email and password from state
     const emailValue = email.trim();
     const passwordValue = password.trim();
-  
-    // Define a regular expression pattern for a valid email address
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-    // Check if the email is valid
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
     const isEmailValid = emailPattern.test(emailValue);
-  
-    // Check if the password meets the minimum length requirement
     const isPasswordValid = passwordValue.length >= 8;
-  
-    // Update the state to indicate form validity
     setIsFormValid(isEmailValid && isPasswordValid);
-  
-    // Return true if the form is valid, otherwise false
     return isEmailValid && isPasswordValid;
   };
-  
-  // In your handleSignUp function, you can use validateForm like this:
-  
+
   const handleSignUp = (e) => {
     e.preventDefault();
-  
-    // Perform client-side validation
     const isFormValid = validateForm();
-  
+
     if (isFormValid) {
-      // Form is valid, proceed with registration
+      setIsLoading(true);
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -48,32 +41,46 @@ function MyAccount() {
         })
         .catch((error) => {
           console.error('Sign-up error:', error);
-          setError(error.message); // Set the error message
+          setError(error.message);
+          setIsLoading(false);
         });
     }
   };
-  
 
   const handleSignIn = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    signInWithEmailAndPassword(auth, email, password) // Use signInWithEmailAndPassword from auth
-      .then((userCredential) => {
-        // User signed in successfully
-        const user = userCredential.user;
-        console.log('User signed in:', user);
-        navigate('/dashboard');
+    e.preventDefault();
+    const isFormValid = validateForm();
 
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error('Sign-in error:', error);
-        setError(error.message); // Set the error message
-      });
+    if (isFormValid) {
+      setIsLoading(true);
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log('User signed in:', user);
+          navigate('/dashboard');
+        })
+        .catch((error) => {
+          console.error('Sign-in error:', error);
+          setError(error.message);
+          setIsLoading(false);
+        });
+    }
   };
 
+  
+
+
   return (
+    <div>
+       {loading ? (
+        <div className='loader-con'>
+          <div className="loader"></div>
+        </div>
+      ) : (
+    
     <div className="container mb-5">
       {/* Your account page content */}
+  
       
       <div className="row mt-5">
         <h5 className="mt-3"> <strong>MY Account</strong></h5>
@@ -178,6 +185,8 @@ function MyAccount() {
           </div>
         </div>
       </div>
+    </div>
+      )}
     </div>
   );
 }

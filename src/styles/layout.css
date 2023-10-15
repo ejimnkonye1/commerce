@@ -4,3 +4,19 @@
         margin-top: 90px; 
       }
   }
+  /* layout.css */
+
+.fade-left-animation {
+    animation: fadeLeft 2s ease infinite; /* Adjust the duration (2s) as needed */
+    @keyframes fadeLeft {
+      0% {
+        transform: translateX(0);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(-100%);
+        opacity: 1;
+      }
+    }
+  }
+  
