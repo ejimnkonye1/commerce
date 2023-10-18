@@ -61,7 +61,7 @@ const handleAddToCart = (product) => {
           </div>
               <div className="row mt-4">
                 {currentProductsPage.map((product, index) => (
-                  <div className="col-md-4 mb-4 col-lg-4 col-sm-6 d-flex" key={index}>
+                  <div className="col-6 col-md-4 mb-4 col-lg-4 col-sm-6 d-flex" key={index}>
                     <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card">
                       <div className="border-bottom pb-2 d-flex justify-content-center">
                         {/* Use Link to navigate to the product details page */}

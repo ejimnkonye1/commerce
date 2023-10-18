@@ -21,7 +21,7 @@ function MenuItem() {
         <h4 className="mb-4">{query} </h4> 
         <div className="row">
           {currentProducts.map((product, index) => (
-            <div className="col-md-4 mb-4 col-lg-3 col-sm-6" key={index}>
+            <div className="col-6 col-md-4 mb-4 col-lg-3 col-sm-6" key={index}>
               {/* Display product details here */}
               <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card">
                 <div className="border-bottom pb-2 d-flex justify-content-center">

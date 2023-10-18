@@ -74,7 +74,12 @@ function Head({ cartItems, loading }) {
       </div>
 
       <div className=" d-flex justify-content-end">
-        <form className="form d-flex " role="search">
+        <form className="form d-flex " role="search"
+          onSubmit={(e) => {
+            e.preventDefault(); // Prevent the default form submission
+            handleSearch(); // Manually trigger the search function
+          }}
+        >
           <div>
           <input
             className="form-control me-2"

@@ -111,7 +111,9 @@ function MyAccount({loading}) {
                   id="password"
                   placeholder="Enter your password"
                   onChange={(e) => setPassword(e.target.value)}
+                  minLength={'8'}
                   required
+                
                 />
               </div>
               {/* <div className="form-check mb-3">

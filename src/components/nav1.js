@@ -40,7 +40,12 @@ function Navbarsm({ cartItems }) {
             />
           </Link>
           
-          <form className="form-inline search-form">
+          <form className="form-inline search-form"
+            onSubmit={(e) => {
+              e.preventDefault(); // Prevent the default form submission
+              handleSearch(); // Manually trigger the search function
+            }}
+          >
             <div className="input-group" style={{width:''}}>
               <input
                 type="text"
