@@ -55,13 +55,12 @@ const handleAddToCart = (product) => {
         <div className="">
           <section className="">
             {/* Apply the 'container' class directly to the product container */}
-            <div className="container" id="pro">
-          <div className='mb-4'>
-          <h5 className="shop mt-4">SHOP</h5>
-          </div>
-              <div className="row mt-4">
+            <div className="container"style={{marginTop:'60px'}} id="pro">
+          
+              <div className="row ">
+                   <h5 className="shop">SHOP</h5>
                 {currentProductsPage.map((product, index) => (
-                  <div className="col-6 col-md-4 mb-4 col-lg-4 col-sm-6 d-flex" key={index}>
+                  <div className="col-6 col-md-4 mt-4 mb-4 col-lg-4 col-sm-6 d-flex" key={index}>
                     <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card">
                       <div className="border-bottom pb-2 d-flex justify-content-center">
                         {/* Use Link to navigate to the product details page */}
