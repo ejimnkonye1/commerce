@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Link} from 'react-router-dom';
 
-function Checkout({cartItems,}) {
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+function Checkout({ cartItems }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -14,43 +15,25 @@ function Checkout({cartItems,}) {
   const [email, setEmail] = useState("");
   const [createAccount, setCreateAccount] = useState(false);
   const [password, setPassword] = useState(""); // Password field
-  const [user, setUser] = useState(null); // Store user information
+
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const item of cartItems) {
-      // Assuming each item has a "price" property and considering quantity
       totalPrice += parseFloat(item.price) * item.quantity;
     }
     return totalPrice;
-  };
-  const [paymentData, setPaymentData] = useState({
-    cardNumber: '',
-    expirationDate: '',
-    cvv: '',
-    cardHolderName: '',
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPaymentData({ ...paymentData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission, e.g., send payment data to a payment gateway
-    // You would typically integrate with a payment gateway library to securely process payments.
   };
 
   return (
     <div className="container mt-5">
       <h5>Checkout</h5>
-      <p>Returning customer <Link>
-      click here to Login
-      </Link></p>
-      <div className='row'>
+      <p>
+        Returning customer <Link to="#">click here to Login</Link>
+      </p>
+      <div className="row">
         <h5>Billing details</h5>
-      <div className='col-6'>
-      <form onSubmit={handleSubmit}>
+        <div className="col-6">
+          <form>
             <div className="d-flex justify-content-between mb-2 phone-form">
               <div>
                 <label htmlFor="firstName">First name</label>
@@ -196,112 +179,69 @@ function Checkout({cartItems,}) {
 )}
           
           </form>
-      </div>
-      <div className='col-6'>
-   
-      
-      <div>
-        <h3>Your Orders</h3>
-        <table className="table">
-    <thead className='border'> 
-      <tr>
-        <th>Product</th>
-        
-        
-        <th>SubTotal</th>
-      </tr>
-    </thead >
-    <tbody className='border'>
-      {cartItems.map((item, index) => (
-        <tr key={index}>
-          <td>{item.name} x {item.quantity}</td>
-        
-          
-          <td>NGN{(item.price * item.quantity).toFixed(2)}</td>
-          
-        </tr>
-      ))}
-    </tbody>
-    <tbody className='border'>
-  
-  <tr>
-    <td>Subtotal</td>
-  
-    
-    <td> NGN{calculateTotalPrice()}</td>
-    
-  </tr>
+        </div>
+        <div className="col-6">
+          <div>
+            <h3>Your Orders</h3>
+            <table className="table">
+              <thead className="border">
+                <tr>
+                  <th>Product</th>
+                  <th>SubTotal</th>
+                </tr>
+              </thead>
+              <tbody className="border">
+                {cartItems.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name} x {item.quantity}</td>
+                    <td>NGN{(item.price * item.quantity).toFixed(2)}</td>
+                  </tr>
+                ))}
+                <tr>
+                  <td>Subtotal</td>
+                  <td>NGN{calculateTotalPrice()}</td>
+                </tr>
+                <tr>
+                  <td>Shipping Fee</td>
+                  <td>NGN2000</td>
+                </tr>
+                <tr>
+                  <td>Total</td>
+                  <td>Total Price: NGN{calculateTotalPrice() + 2000}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-</tbody>
-    <tbody className='border'>
-  
-        <tr>
-          <td>Shipping Fee </td>
-        
-          
-          <td> NGN2000</td>
-          
-        </tr>
-    
-    </tbody>
-    <tbody className='border'>
-  
-  <tr>
-    <td>Total</td>
-  
-    
-    <td> Total Price: NGN{calculateTotalPrice() + 2000}</td>
-    
-  </tr>
-
-</tbody>
-  </table>
-
-
-  <p></p>
-      </div>
-      <div class="container">
-        <h2>Payment Page</h2>
-
-        <div class="payment-options">
-            <div class="payment-method">
+          <div class="container">
+            <h2>Payment Page</h2>
+            <div class="payment-options">
+              <div class="payment-method">
                 <label for="bankTransfer">
-                <input className='mr-3' type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer"/>
-                      Direct bank transfer
+                  <input className="mr-3" type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer" />
+                  Direct bank transfer
                 </label>
                 <p>
-                    Make your payment directly into our bank account.
-                    Please use your Order ID as the payment reference.
-                    Your order will not be shipped until the funds have cleared in our account.
+                  Make your payment directly into our bank account.
+                  Please use your Order ID as the payment reference.
+                  Your order will not be shipped until the funds have cleared in our account.
                 </p>
-
+              </div>
             </div>
 
-            {/* <div class="payment-method">
-                <label for="cardPayment">
-                    Pay with card
-                </label>
-                <p>
-                    Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
-                </p>
-                <input type="radio" id="cardPayment" name="paymentMethod" value="cardPayment"/>
-            </div> */}
-        </div>
+            <div class="terms-and-conditions">
+              <label>
+                <input type="checkbox" className="p-2" id="agreeToTerms" name="agreeToTerms" />
+                I have read and agree to the website terms and conditions
+              </label>
+            </div>
 
-        <div class="terms-and-conditions">
-            <label>
-                <input type="checkbox" className='mr-3 p-2' id="agreeToTerms" name="agreeToTerms"/>
-              I have read and agree to the website terms and conditions
-            </label>
+            <div class="payment-button mt-3">
+              <p className="btn btn-danger">Place Order</p>
+            </div>
+          </div>
         </div>
-
-        <div class="payment-button mt-3">
-            <p className='btn btn-danger '>Place Order</p>
-        </div>
-        
-    </div>
-    </div>
-    </div>
+      </div>
     </div>
   );
 }

@@ -103,7 +103,7 @@ function Navbarsm({ cartItems }) {
             </div>
           </form>
           
-          <div className="cart-icon">
+          <div className="cart-icon mt-2">
             <Link to="/cart" className="nav-link">
               <i className="fas fa-shopping-cart"></i>
               {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
