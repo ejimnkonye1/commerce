@@ -32,7 +32,7 @@ function Checkout({ cartItems }) {
       </p>
       <div className="row">
         <h5>Billing details</h5>
-        <div className="col-6">
+        <div className="col-md-6">
           <form>
             <div className="d-flex justify-content-between mb-2 phone-form">
               <div>
@@ -153,16 +153,24 @@ function Checkout({ cartItems }) {
                 size={70}
               />
             </div>
-            <div className="mb-3">
-              <label>
-                <input
-                  type="checkbox"
-                  id="createAccount"
-                  onChange={(e) => setCreateAccount(e.target.checked)}
-                />
-                Create Account
-              </label>
-            </div>
+            <div className="mb-3 row">
+  <div className="col-6">
+    <div className="form-check">
+      <input
+        type="checkbox"
+        id="createAccount"
+        className="form-check-input"
+        onChange={(e) => setCreateAccount(e.target.checked)}
+      />
+      <label htmlFor="createAccount" className="form-check-label">
+        Create Account
+      </label>
+    </div>
+  </div>
+</div>
+
+
+
 
             {createAccount && (
               <div className="mb-3">
@@ -180,7 +188,7 @@ function Checkout({ cartItems }) {
           
           </form>
         </div>
-        <div className="col-6">
+        <div className="col-md-6">
           <div>
             <h3>Your Orders</h3>
             <table className="table">
@@ -216,25 +224,37 @@ function Checkout({ cartItems }) {
           <div class="container">
             <h2>Payment Page</h2>
             <div class="payment-options">
-              <div class="payment-method">
-                <label for="bankTransfer">
-                  <input className="mr-3" type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer" />
-                  Direct bank transfer
-                </label>
-                <p>
-                  Make your payment directly into our bank account.
-                  Please use your Order ID as the payment reference.
-                  Your order will not be shipped until the funds have cleared in our account.
-                </p>
-              </div>
-            </div>
+  <div class="payment-method">
+    <div class="form-check">
+      <input
+        type="radio"
+        id="bankTransfer"
+        name="paymentMethod"
+        value="bankTransfer"
+        class="form-check-input"
+      />
+      <label for="bankTransfer" class="form-check-label">
+        Direct bank transfer
+      </label>
+    </div>
+    <p>
+      Make your payment directly into our bank account.
+      Please use your Order ID as the payment reference.
+      Your order will not be shipped until the funds have cleared in our account.
+    </p>
+  </div>
+</div>
 
-            <div class="terms-and-conditions">
-              <label>
-                <input type="checkbox" className="p-2" id="agreeToTerms" name="agreeToTerms" />
-                I have read and agree to the website terms and conditions
-              </label>
-            </div>
+
+<div class="terms-and-conditions">
+  <div class="form-check">
+    <input type="checkbox" id="agreeToTerms" name="agreeToTerms" class="form-check-input" />
+    <label for="agreeToTerms" class="form-check-label">
+      I have read and agree to the website terms and conditions
+    </label>
+  </div>
+</div>
+
 
             <div class="payment-button mt-3">
               <p className="btn btn-danger">Place Order</p>
