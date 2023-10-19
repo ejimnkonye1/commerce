@@ -33,15 +33,15 @@ useEffect(() =>{
       
     <div className="container mt-5 bg-white ">
         <div className="d-flex justify-content-between">
-             <h3 className="" >Featured product</h3>
+             <h3 className="fea" >Featured product</h3>
            </div>
    
          </div>
        <section className="bg-light p-1">
-       <div className="container mt-5  " id="pro"  >
+       <div className="container mt-4" id="pro"  >
         <div className="row">
         {currentProducts.map((product, index) => (
-            <div className="col-6 col-md-4 mb-4 col-lg-3 col-sm-6 d-flex" key={index}>
+            <div className="col-6 col-md-4 mb-4 col-lg-3 col-sm-6 d-flex pro-1" key={index}>
               <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card" data-aos='fade-down' >
                 <div className="border-bottom pb-2 d-flex justify-content-center" >
                   {/* Use Link to navigate to the product details page */}
@@ -57,11 +57,13 @@ useEffect(() =>{
               
                 <div className="card-body">
                   <p className="card-title">{product.name}</p>
-                  <p>  <StarRating /></p>
+                  <p className="star">  <StarRating /></p>
                   <p className="card-text text-success">
                     <strong>NGN{product.price}</strong>
                   </p>
-                  <button className="btn btn-success" onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                        <div className="btn-1">
+                        <button className="btn btn-success" onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                        </div>
                 </div>
               </div>
             </div>

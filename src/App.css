@@ -132,6 +132,9 @@ a {
     outline: none;
     border: none;
    }
+   .star{
+    display: none;
+   }
 }
 @media (max-width: 414px) {
   .navbar {
@@ -153,7 +156,9 @@ a {
     margin-top: 13px;
     margin-right: 10px;
   }
-  
+  .star{
+    display: none;
+   }
 }
 /* Media query for tablet screens (768px to 1024px) */
 
@@ -167,3 +172,25 @@ a {
     box-shadow: none !important; /* This is to remove any shadow that might appear */
   }
   
+  @media (max-width: 768px) { 
+    .star{
+      display: none;
+     }
+     .detil{
+      display: none;
+     }
+     .btn-1{
+      display: none;
+     }
+     .card-title {
+      font-size: 13px; /* Change the font size as needed */
+      color: black;
+    }
+    .card-text{
+      font-size: 13px; 
+    }
+    .fea{
+      font-size: 16px;
+    }
+ 
+  }

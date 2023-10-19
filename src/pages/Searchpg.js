@@ -3,22 +3,35 @@ import { useParams } from "react-router-dom";
 import initialProducts from "./productimg";
 import { Link } from "react-router-dom";
 import '../styles/search.css'
-function SearchPage() {
+function SearchPage({ searchError }) {
   const { query } = useParams();
   const [currentProducts, setCurrentProducts] = useState([]);
 
   useEffect(() => {
+    console.log('Query:', query);
+
     const filteredProducts = initialProducts.filter((product) =>
       product.name.toLowerCase().includes(query.toLowerCase())
     );
+    console.log('Filtered Products:', filteredProducts);
+
+    if (filteredProducts.length === 0) {
+      console.log('No products found');
+    }
+
     setCurrentProducts(filteredProducts);
   }, [query]);
+
 
   return (
     <div>
     
-      <div className="container mt-5">
-        <h3 className="serach-result mb-4"> Search Results for: "{query}" </h3> 
+      <div className="container mt-5 mb-5">
+      {currentProducts.length === 0 ? (
+          <h5 className="error-message mb-5">No products found for: "{query}"</h5>
+        ) : (
+          <h3 className="search-result mb-4">Search Results for: "{query}"</h3>
+        )}
         <div className="row">
           {currentProducts.map((product, index) => (
             <div className="col-6 col-md-4 mb-4 col-lg-3 col-sm-6" key={index}>

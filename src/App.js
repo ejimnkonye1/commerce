@@ -27,8 +27,10 @@ import AccountDetailsForm from './pages/accountdetails';
 import Checkout from './pages/checkout';
 import Login from './pages/test';
 import Tablet from './components/tablet';
+import Test from './components/payment';
 
-
+import Search from './pages/Search';
+import Payment from './components/payment';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,7 +38,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); // Loading state
-  
+  const [searchError, setSearchError] = useState(false); // State for search error
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
@@ -74,13 +76,15 @@ function App() {
         <Head searchQuery={searchQuery} setSearchQuery={setSearchQuery} cartItems={cartItems}  />
         <Navbarsm cartItems={cartItems}   />
           <Tablet /> {/* Conditionally render Tablet */}
+          
          <Navbar /> {/* Conditionally render Navbar */}
-        {/* <Cart cartItems={cartItems} setCartItems={setCartItems} /> */}
     
+        {/* <Cart cartItems={cartItems} setCartItems={setCartItems} /> */}
+  
         <Routes>
           <Route path='/' element={<Layout  cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path='/' element={<Products cartItems={cartItems} setCartItems={setCartItems} />} />
-          <Route path="/searchpg/:query" element={<SearchPage />} />
+          <Route path="/searchpg/:query" element={<SearchPage searchError={searchError} />} />
           <Route path="/menuitem/:query" element={<MenuItem />} />
           <Route path='/home' element={<Layout  cartItems={cartItems} setCartItems={setCartItems}/>} />
           <Route path="/account">
@@ -97,7 +101,7 @@ function App() {
           <Route path="/address" element={<BillingAddressForm />} />
           <Route path="/acct-details" element={<AccountDetailsForm />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/lll" element={<Login />} />
+          <Route path="/pay" element={<Payment cartItems={cartItems} />} />
         </Routes>
         <Footer />
         <BottomNavbar />

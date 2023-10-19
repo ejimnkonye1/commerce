@@ -85,6 +85,13 @@ const updateQuantity = (item, increment) => {
       <div className='mb-3'>
       <h3 className='ml-4 mt-3'> Cart</h3>
       </div>
+      {cartItems.length === 0 ? ( // Check if the cart is empty
+          <div className="text-center">
+            <p>Your cart is empty.</p>
+            <a href="/shop">Return to Shop</a>
+          </div>
+        ) : (
+          <div>
   <table className="table d-none d-md-table">
     <thead>
       <tr className='text-center'>
@@ -217,7 +224,8 @@ const updateQuantity = (item, increment) => {
   
    <p className="btn btn-danger mt-3">Proceed to checkout</p>
    </div>
-   
+   </div>
+      )}
 </div>
 
 

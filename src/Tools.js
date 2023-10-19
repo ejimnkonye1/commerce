@@ -11,11 +11,11 @@ function Tools() {
       <div className="row">
         
       <h5>Tutorials</h5>
-        <div className="col-md-4 col-lg-3 mb-4 ">
+        <div className="col-6 col-md-4 col-lg-3 mb-4 ">
        
         <div className="">
         <div className=" d-flex justify-content-center ">
-          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
+          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "70%"}} />
           </div>
           <div className="card-body">
           
@@ -24,10 +24,10 @@ function Tools() {
           </div>
         </div>
         
-        <div className="col-md-4 col-lg-3 mb-4 ">
+        <div className="col-6 col-md-4 col-lg-3 mb-4 ">
         <div className="">
         <div className=" d-flex justify-content-center">
-          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
+          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "70%"}} />
           </div>
           <div className="card-body">
           
@@ -35,10 +35,10 @@ function Tools() {
           </div>
           </div>
         </div>
-        <div className="col-md-4 col-lg-3 mb-4 ">
+        <div className="col-6 col-md-4 col-lg-3 mb-4 ">
         <div className="">
         <div className="d-flex justify-content-center ">
-          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
+          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "70%"}} />
           </div>
           <div className="card-body">
           
@@ -46,10 +46,10 @@ function Tools() {
           </div>
           </div>
         </div>
-        <div className="col-md-4 col-lg-3  mb-4 ">
+        <div className="col-6 col-md-4 col-lg-3  mb-4 ">
         <div className="">
         <div className="d-flex justify-content-center ">
-          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "50%"}} />
+          <img  src={toolImage2} className="" alt="Tool 1" style={{width: "70%"}} />
           </div>
           <div className="card-body">
           

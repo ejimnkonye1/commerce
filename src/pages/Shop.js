@@ -57,7 +57,7 @@ const handleAddToCart = (product) => {
             {/* Apply the 'container' class directly to the product container */}
             <div className="container" id="pro">
           <div className='mb-4'>
-          <h5 className="  mt-5">SHOP</h5>
+          <h5 className="shop mt-4">SHOP</h5>
           </div>
               <div className="row mt-4">
                 {currentProductsPage.map((product, index) => (
@@ -79,9 +79,9 @@ const handleAddToCart = (product) => {
                         <p className="card-text text-primary">
                           <strong>NGN{product.price}</strong>
                         </p>
-                        <div className="text-center">
+                        <div className="detil text-center">
                           <Link to={`/product/${index}`}>
-                            <p className="btn btn-success">View Details</p>
+                            <p className="detil btn btn-success">View Details</p>
                           </Link>
                           
                         </div>

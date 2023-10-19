@@ -20,7 +20,7 @@ ul {
 
 /* Media query for smaller screens (phones) */
 @media (max-width: 768px) {
-    .container {
+    #foot {
        display: grid;
        justify-items: start;
        

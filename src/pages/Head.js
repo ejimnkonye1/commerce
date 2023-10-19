@@ -12,6 +12,7 @@ function Head({ cartItems, loading }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null); // Store user information
   const navigate = useNavigate();
+  const [searchError, setSearchError] = useState(false); // State for search error
 
   useEffect(() => {
     // Add a Firebase authentication listener
@@ -30,11 +31,16 @@ function Head({ cartItems, loading }) {
       unsubscribe();
     };
   }, []);
-
   const handleSearch = () => {
     const query = searchQuery.toLowerCase().trim();
     if (query) {
-      navigate(`/searchpg/${query}`);
+      // Perform your search here and set searchError accordingly
+      if (query) {
+        setSearchError(false); // Products found
+        navigate(`/searchpg/${query}`);
+      } else {
+        setSearchError(true); // No products found
+      }
     }
   };
 
@@ -61,78 +67,74 @@ function Head({ cartItems, loading }) {
       <div className="navbar-brand">
         <ul className="navbar-nav ml-auto ">
           <li className="nav-item">
-            <a href="mailto:contact@example.com" className="nav-link">
+            <a href="mailto:contact@example.com" className="nav-link"  style={{fontSize:'15px'}}>
               <i className="fas fa-envelope"></i> Estynetech@gmail
             </a>
           </li>
           <li className="nav-item">
-            <a href="tel:1234567890" className="nav-link">
+            <a href="tel:1234567890" className="nav-link" style={{fontSize:'15px'}}>
               <i className="fas fa-phone"></i> 070624873335
             </a>
           </li>
         </ul>
       </div>
-
+      <form class="d-flex" role="search" style={{marginBottom:'10px', marginLeft:'30px'}}
+       onSubmit={(e) => {
+        e.preventDefault(); // Prevent the default form submission
+        handleSearch(); // Manually trigger the search function
+      }}
+      >
+      <input
+       className="form-control me-2"
+       type="search"
+       placeholder="I'm searching for.."
+       aria-label="Search"
+       value={searchQuery}
+       onChange={(e) => setSearchQuery(e.target.value)}
+       onKeyDown={(e) => {
+         if (e.key === "Enter") {
+           handleSearch();
+         }
+       }}
+         />
+      <button class="btn btn-outline-success" type="submit"   onClick={handleSearch}>Search</button>
+    </form>
       <div className=" d-flex justify-content-end">
-        <form className="form d-flex " role="search"
-          onSubmit={(e) => {
-            e.preventDefault(); // Prevent the default form submission
-            handleSearch(); // Manually trigger the search function
-          }}
-        >
-          <div>
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="I'm searching for.."
-            aria-label="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-          />
-          <button
-            className="btn btn-outline-success"
-            type="button"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
-          </div>
-        </form>
+  
+     
         <ul className="navbar-nav mx-auto justify-content-between">
+          <li>
+            
+          </li>
           {user ? (
             <li className="nav-item">
-              <span className="nav-link">
+              <span className="nav-link"  style={{fontSize:'15px'}}>
                 <i className="fas fa-user"></i> {user.email}
               </span>
             </li>
           ) : (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to="/account">
+                <Link className="nav-link" to="/account"  style={{fontSize:'15px'}}>
                   <i className="fas fa-sign-in-alt"></i> Sign Up
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/account">
+                <Link className="nav-link" to="/account" style={{fontSize:'15px'}}>
                   <i className="fas fa-login"></i> Login
                 </Link>
               </li>
             </>
           )}
           <li className="nav-item">
-            <Link to="/cart" className="nav-link">
+            <Link to="/cart" className="nav-link" style={{fontSize:'15px'}}>
               <i className="fas fa-shopping-cart"></i> Cart{" "}
               {cartItemCount > 0 && <span className="">{cartItemCount}</span>}
             </Link>
           </li>
           {user && (
             <li className="nav-item">
-              <Link className="nav-link" onClick={handleSignOut}>
+              <Link className="nav-link" style={{fontSize:'15px'}} onClick={handleSignOut}>
                 <i className="fas fa-sign-out-alt"></i> Sign Out
               </Link>
             </li>

@@ -19,7 +19,7 @@ function Search() {
           <div className="col-md-12 mb-4">
             <div className="input-group">
               <input
-                type="text"
+                type="search"
                 className="form-control"
                 placeholder="Search products"
                 value={searchQuery}

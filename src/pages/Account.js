@@ -82,7 +82,7 @@ function MyAccount({loading}) {
       {/* Your account page content */}
   
       
-      <div className="row mt-5">
+      <div className="row ">
         <h5 className="mt-3"> <strong>MY Account</strong></h5>
         {error && <div className=" container alert alert-danger">{error}</div>} {/* Display error message */}
         <div className="col-md-6 mt-5">

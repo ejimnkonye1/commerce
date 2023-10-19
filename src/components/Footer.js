@@ -13,7 +13,7 @@ import "../styles/Footer.css";
 function Footer() {
   return (
     <footer className="footer  bg-light border-top"  id="abt">
-      <div className="container ">
+      <div className="container " id="foot">
         <div className="mb-3"> 
         <div className="row">
           <div className="col-md-12">
