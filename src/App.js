@@ -10,7 +10,7 @@ import Account from './pages/Account';
 import Footer from './components/Footer';
 import BottomNavbar from './components/bottomnav';
 import Shop from './pages/Shop';
-import MyHome from './pages/Homepg';
+
 import Tools from './Tools';
 import Layout from './pages/layout';
 import ProductDetails from './pages/Productdetails';
@@ -25,12 +25,9 @@ import MenuItem from './pages/Menuitempg';
 import BillingAddressForm from './pages/billingad';
 import AccountDetailsForm from './pages/accountdetails';
 import Checkout from './pages/checkout';
-import Login from './pages/test';
-import Tablet from './components/tablet';
-import Test from './components/payment';
 
-import Search from './pages/Search';
-import Payment from './components/payment';
+import Tablet from './components/tablet';
+
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -100,8 +97,8 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/address" element={<BillingAddressForm />} />
           <Route path="/acct-details" element={<AccountDetailsForm />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/pay" element={<Payment cartItems={cartItems} />} />
+          <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+
         </Routes>
         <Footer />
         <BottomNavbar />

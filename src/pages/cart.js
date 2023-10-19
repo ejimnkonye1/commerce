@@ -1,6 +1,7 @@
 // Cart.js
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Cart({ cartItems, setCartItems }) {
@@ -88,7 +89,7 @@ const updateQuantity = (item, increment) => {
       {cartItems.length === 0 ? ( // Check if the cart is empty
           <div className="text-center">
             <p>Your cart is empty.</p>
-            <a href="/shop">Return to Shop</a>
+            <Link to="/shop">Return to Shop</Link>
           </div>
         ) : (
           <div>
@@ -222,7 +223,11 @@ const updateQuantity = (item, increment) => {
     </div>
    <div className='d-flex justify-content-end'>
   
-   <p className="btn btn-danger mt-3">Proceed to checkout</p>
+    <Link to={'/checkout'}>
+   
+    <p className="btn btn-danger mt-3"> Proceed to checkout </p>
+  </Link>
+ 
    </div>
    </div>
       )}
