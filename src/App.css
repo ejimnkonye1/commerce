@@ -123,6 +123,7 @@ a {
 
   .cart-icon {
     margin: 10px 0;
+    margin-top: 20px;
     margin-left: 10px;
   }
 }
@@ -135,6 +136,8 @@ a {
    .star{
     display: none;
    }
+   .tablet{
+    display: none;}
 }
 @media (max-width: 414px) {
   .navbar {
