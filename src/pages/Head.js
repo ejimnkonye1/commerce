@@ -62,17 +62,17 @@ function Head({ cartItems, loading }) {
           <div className="loader"></div>
         </div>
       ) : (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <nav className="navbar navbar-expand-lg navbar-light bg-success">
     <div className="container head">
       <div className="navbar-brand">
         <ul className="navbar-nav ml-auto ">
           <li className="nav-item">
-            <a href="mailto:contact@example.com" className="nav-link"  style={{fontSize:'15px'}}>
-              <i className="fas fa-envelope"></i> Estynetech@gmail
+            <a href="mailto:contact@example.com" className="nav-link text-white"  style={{fontSize:'15px'}}>
+              <i className="fas fa-envelope text-white"></i> Estynetech@gmail
             </a>
           </li>
           <li className="nav-item">
-            <a href="tel:1234567890" className="nav-link" style={{fontSize:'15px'}}>
+            <a href="tel:1234567890" className="nav-link text-white" style={{fontSize:'15px'}}>
               <i className="fas fa-phone"></i> 070624873335
             </a>
           </li>
@@ -84,10 +84,11 @@ function Head({ cartItems, loading }) {
         handleSearch(); // Manually trigger the search function
       }}
       >
+     <div className="search-input">
       <input
        className="form-control me-2"
        type="search"
-       placeholder="I'm searching for.."
+       placeholder="I'm searching for..."
        aria-label="Search"
        value={searchQuery}
        onChange={(e) => setSearchQuery(e.target.value)}
@@ -97,7 +98,8 @@ function Head({ cartItems, loading }) {
          }
        }}
          />
-      <button class="btn btn-outline-success" type="submit"   onClick={handleSearch}>Search</button>
+         </div>
+      {/* <button class="btn btn-outline-danger" type="submit"   onClick={handleSearch}>Search</button> */}
     </form>
       <div className=" d-flex justify-content-end">
   
@@ -115,21 +117,23 @@ function Head({ cartItems, loading }) {
           ) : (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to="/account"  style={{fontSize:'15px'}}>
+                <Link className="nav-link text-white" to="/account"  style={{fontSize:'15px'}}>
                   <i className="fas fa-sign-in-alt"></i> Sign Up
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/account" style={{fontSize:'15px'}}>
+                <Link className="nav-link text-white" to="/account" style={{fontSize:'15px'}}>
                   <i className="fas fa-login"></i> Login
                 </Link>
               </li>
             </>
           )}
           <li className="nav-item">
-            <Link to="/cart" className="nav-link" style={{fontSize:'15px'}}>
-              <i className="fas fa-shopping-cart"></i> Cart{" "}
-              {cartItemCount > 0 && <span className="">{cartItemCount}</span>}
+            <Link to="/cart" className="nav-link text-white" style={{fontSize:'15px'}}>
+            <div className="cart-icon-container">
+              <i className="fas fa-shopping-cart"></i> {" "}
+              {cartItemCount > 0 && <span className="count">{cartItemCount}</span>}
+              </div>
             </Link>
           </li>
           {user && (

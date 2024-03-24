@@ -68,14 +68,13 @@ function App() {
     <div >
    
     <div className="App">
-   
+     
       <BrowserRouter>
         <Head searchQuery={searchQuery} setSearchQuery={setSearchQuery} cartItems={cartItems}  />
-        <Navbarsm cartItems={cartItems}   />
-          <Tablet /> {/* Conditionally render Tablet */}
+        <Navbarsm  cartItems={cartItems}   />
+          {/* <Tablet />  */}
           
-         <Navbar /> {/* Conditionally render Navbar */}
-    
+         <Navbar /> 
         {/* <Cart cartItems={cartItems} setCartItems={setCartItems} /> */}
   
         <Routes>

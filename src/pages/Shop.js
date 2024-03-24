@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 import initialProducts from './productimg';
 import { Link } from 'react-router-dom';
 import ProductDetails from './Productdetails';
-
+import CustomPagination from '../components/pagination';
 function Shop({ cartItems, setCartItems }) {
 
 const handleAddToCart = (product) => {
@@ -60,7 +60,7 @@ const handleAddToCart = (product) => {
               <div className="row ">
                    <h5 className="shop">SHOP</h5>
                 {currentProductsPage.map((product, index) => (
-                  <div className="col-6 col-md-4 mt-5 mb-4 col-lg-4 col-sm-6 d-flex" key={index}>
+                  <div className="col-6 col-md-4 mt-5 mb-4 col-lg-3 col-sm-6 d-flex" key={index}>
                     <div className="card border-1 shadow-sm d-flex flex-column h-100 product-card">
                       <div className="border-bottom pb-2 d-flex justify-content-center">
                         {/* Use Link to navigate to the product details page */}
@@ -75,16 +75,16 @@ const handleAddToCart = (product) => {
                       </div>
                       <div className="card-body">
                         <p className="card-title">{product.name}</p>
-                        <p className="card-text text-primary">
+                        <p className="card-text text-success">
                           <strong>NGN{product.price}</strong>
                         </p>
                         <div className="detil text-center">
                           <Link to={`/product/${index}`}>
-                            <p className="detil btn btn-success">View Details</p>
+                            <p className="detil btn btn-danger">View Details</p>
                           </Link>
                           
                         </div>
-                        <button className='btn btn-primary ' onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                        {/* <button className='btn btn-primary ' onClick={() => handleAddToCart(product)}>Add to Cart</button> */}
                       </div>
                     </div>
                   </div>
@@ -94,28 +94,16 @@ const handleAddToCart = (product) => {
           </section>
         </div>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul className="pagination justify-content-center">
-          <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-            <button className="page-link" onClick={prevPage}>
-              Previous
-            </button>
-          </li>
-          {/* Create page number buttons */}
-          {Array.from({ length: Math.ceil(currentProducts.length / productsPerPage) }, (_, i) => (
-            <li key={i} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
-              <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
-                {i + 1}
-              </button>
-            </li>
-          ))}
-          <li className={`page-item ${currentPage === Math.ceil(currentProducts.length / productsPerPage) ? 'disabled' : ''}`}>
-            <button className="page-link" onClick={nextPage}>
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <div className="d-flex justify-content-center">
+  <CustomPagination 
+    currentPage={currentPage}
+    totalPages={Math.ceil(currentProducts.length / productsPerPage)}
+    prevPage={prevPage}
+    nextPage={nextPage}
+  />
+</div>
+
+
       
     </section>
   );

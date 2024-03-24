@@ -27,18 +27,24 @@ function Layout({ cartItems, setCartItems }) {
     }, [images.length]);
 
     return (
-        <section>
-            <div className="container" id="hom">
+        <section className="p-2 hom-pg">
+            <div className="container " id="hom">
                 <div className="row">
                     <div className="col">
-                        <div className="rounded" data-aos="fade-left">
-                            <img
-                                src={images[currentImageIndex]}
-                                className="img-fluid fade-left-animation"
-                                alt="home"
-                                style={{ maxHeight: "400px", width: "100%" }}
-                            />
-                        </div>
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src={images1} class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item" data-bs-interval="1000">
+      <img src={images2} class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item" data-bs-interval="1000">
+      <img src={images4} class="d-block w-100" alt="..." />
+    </div>
+  </div>
+ 
+</div>
                     </div>
                 </div>
             </div>

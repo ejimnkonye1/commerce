@@ -12,12 +12,12 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "../styles/Footer.css";
 function Footer() {
   return (
-    <footer className="footer  bg-light border-top"  id="abt">
+    <footer className="footer  bg-success border-top p-2"  id="abt">
       <div className="container " id="foot">
         <div className="mb-3"> 
         <div className="row">
           <div className="col-md-12">
-            <h4 className="text-center mb-2">About Us</h4>
+            <h4 className="text-center mb-2 p-3">About Us</h4>
           </div>
         </div>
         <div className="row ">
@@ -28,7 +28,10 @@ function Footer() {
                 Address: shop eu2 9&10 army shopping arena ibadan<br />
                 Phone number: 08137795180
               </>
-            
+              <p>
+                Address: shop eu2 9&10 army shopping arena ibadan<br />
+                Phone number: 08137795180
+              </p>
           </div>
           <div className="lin col-md-4">
             <h5>Quick Links</h5>

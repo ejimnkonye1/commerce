@@ -121,13 +121,13 @@ const updateQuantity = (item, increment) => {
             </div>
           </td>
           <td className='border'>
-            <div className='mt-4 text-primary'>
+            <div className='mt-4 text-danger'>
             NGN{item.price}
             </div>
           </td>
           <td className='border'>
          <div className='d-flex justify-content-center align-items-center mt-3'>
-         <div className='d-flex justify-content-center align-items-center' style={{border:'1px solid blue',
+         <div className='d-flex justify-content-center align-items-center' style={{border:'1px solid red',
          borderRadius:'5px',width:'90px',
         
         }}>
@@ -145,7 +145,7 @@ const updateQuantity = (item, increment) => {
 
           </td>
           <td className='border'>
-            <div className='mt-4 text-primary'>
+            <div className='mt-4 text-danger'>
             NGN{calculateUpdatedPrice(item)}
             </div>
           </td>
@@ -185,7 +185,7 @@ const updateQuantity = (item, increment) => {
           {item.name}
           </div>
           <div className='d-flex justify-content-center align-items-center mt-3'>
-         <div className='d-flex justify-content-center align-items-center' style={{border:'1px solid blue',
+         <div className='d-flex justify-content-center align-items-center' style={{border:'1px solid red',
          borderRadius:'5px',width:'90px',
         
         }}>
@@ -207,7 +207,7 @@ const updateQuantity = (item, increment) => {
          </div>
         </td>
         <td className='border'>
-          <div className='mt-4 text-primary'>
+          <div className='mt-4 text-danger'>
           NGN{calculateUpdatedPrice(item)}
           </div>
           

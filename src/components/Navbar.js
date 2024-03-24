@@ -38,7 +38,7 @@ const Navbar = () => {
             <div className="d-flex align-items-center">
             <div className="btn-group">
               <button
-                className="btn btn-secondary btn-md dropdown-toggle"
+                className="btn btn-danger btn-md dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -69,22 +69,22 @@ const Navbar = () => {
             </div>
             <div className="mx-auto">
               <ul className="navbar-nav ml-5" >
-                <li className="nav-item">
+                <li className="nav-item all-links">
                   <Link style={{marginLeft:'20px'}} className="nav-link ml-5 active" to="/home">
                     Home
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item all-links">
                   <Link style={{marginLeft:'20px'}}  className="nav-link ml-5" to="/learn">
                     Learn
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item all-links">
                   <Link style={{marginLeft:'20px'}} className="nav-link" to="/Shop">
                     Shop
                   </Link>
                 </li>
-                <li className="nav-item ">
+                <li className="nav-item all-links">
                   <Link style={{marginLeft:'20px'}} className="nav-link" to="/account">
                     My Account
                   </Link>

@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 .navbar-section {
     margin-top: 50px; /* Adjust the value to your desired spacing */
   }
@@ -40,11 +39,11 @@ a {
 }
 .loader {
  
-  border: 16px solid #f3f3f3;
+  border: 16px solid green;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: 16px solid red;
+  width: 70px;
+  height: 70px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
 }
@@ -60,12 +59,14 @@ a {
   100% { transform: rotate(360deg); }
 }
 .menubar{
-  margin-top: 10px;
+  margin-top: 25px;
+  position: relative;
+  top: 5%;
 }
 .bar{
   width: 20px;
   height: 3px;
-  background-color: rgb(137, 130, 130);
+  background-color: #fff;
   margin-bottom: 3px;
 }
 
@@ -129,7 +130,7 @@ a {
 }
 @media (max-width: 375px) {
   .input-group input[type="text"]  {
-    width: 200px;
+    width: 100px;
     outline: none;
     border: none;
    }
@@ -200,8 +201,89 @@ a {
       margin-bottom: 20px;
       margin-left: 10px;
     }
+.stack{
+  width: 100% !important;
+  padding: 10px;
+}
 
-  .shop{
-    margin-top: 200px;
+ 
   }
-  }
+  .search-input input[type="search"] { 
+  width: 500px;
+}
+.search-input input[type="search"]::placeholder{
+  color: red;
+  font-size: medium;
+  font-weight: 700;
+}
+.input-group input[type="text"]::placeholder{
+  color: red;
+  font-size: medium;
+  font-weight: 700;
+}
+.offcanvas{
+  width: 80% !important;
+  height: 85% !important;
+  /* background-color: darkgrey !important; */
+}
+.offcanvas-body{
+   background-color: darkgrey !important;
+   color: white !important;
+}
+.offcanvas-body ul li a{
+  color: white !important;
+}
+.all-links a{
+  color:  red!important;
+  font-weight: 700;
+}
+.product-card{
+  border-color: red !important;
+}
+.detil{
+  width: 100%;
+}
+/* .page-link{
+  color: red !important;
+  
+}
+.page-item{
+  background-color: red !important;
+} */
+/* CSS */
+
+.payment{
+  width: 100%;
+}
+.nav-pills a{
+  color: red !important;
+}
+  
+@media (max-width: 768px) {
+.Small-nav{
+ margin: -0px;
+ padding: -0px;
+  
+}
+.cart-icon{
+  position: relative;
+  left: -40%;
+}
+.hom-pg{
+ margin-top: 20px;
+  
+}
+}
+@media only screen and (max-width: 350px ) {
+  .hom-pg{
+    margin-top: 60px;
+     
+   }
+   .brand{
+    height: 50px;
+    width: 100%;
+    margin: 1px;
+    margin-left: 10px;
+   }
+ 
+}

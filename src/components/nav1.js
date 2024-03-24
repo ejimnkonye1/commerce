@@ -54,30 +54,30 @@ function Navbarsm({ cartItems }) {
     // For example, you can use the category to filter products from a list.
   };
   return (
-    <div className="bot fixed-top border-bottom">
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <div className="d-flex justify-content-between">
-          <div className="menubar"
-            
-            data-bs-toggle="offcanvas"
-            href="#offcanvasExample"
-            role="button"
-            aria-controls="offcanvasExample"
+    <div className="bot   border-bottom ">
+      <nav className="navbar  Small-nav navbar-expand-sm navbar-light bg-success">
+     
+
+        <div className="d-flex justify-content-between  ">
+        
+          <Link to="/" className="navbar-brand">
+          <img
+            src={Logo}
+            alt="Logo"
+            height="50"
+            className="d-inline-block align-top brand"
+          />
+        </Link>
+
           
-          >
-            <div className="bar"></div>
-            <div className="bar"></div>
-            <div className="bar"></div>
-          </div>
-          
-          <Link to="/" className="logo">
+          {/* <Link to="/" className="logo">
             <img
               src={Logo}
               alt="Logo"
               height="30px"
               className="rounded-circle"
             />
-          </Link>
+          </Link> */}
           
           <form className="form-inline search-form"
             onSubmit={(e) => {
@@ -103,14 +103,29 @@ function Navbarsm({ cartItems }) {
             </div>
           </form>
           
+          <div className="d-flex  nav-icon">
+
+          <ul className="navbar-nav icon ml-auto d-flex flex-row ">
+
+        <li className="nav-item">
           <div className="cart-icon">
-            <Link to="/cart" className="nav-link">
-              <i className="fas fa-shopping-cart"></i>
-              {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
+            <Link to="/cart" className="nav-link text-white">
+              <div className='cart-icon-container'>
+                <i className="fas fa-shopping-cart"></i>
+                {cartItemCount > 0 && <span className="count">{cartItemCount}</span>}
+              </div>
             </Link>
           </div>
-        </div>
-        
+        </li>
+        <li className="">
+          <div className="menubar" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
+        </li>
+      </ul>
+     </div>
         <div
         className="offcanvas offcanvas-start"
         tabIndex="-1"
@@ -118,8 +133,8 @@ function Navbarsm({ cartItems }) {
         aria-labelledby="offcanvasExampleLabel"
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="offcanvasExampleLabel">
-            Offcanvas
+          <h5 className="offcanvas-title text-primary" id="offcanvasExampleLabel">
+           Estyne
           </h5>
           <button
             type="button"
@@ -132,11 +147,11 @@ function Navbarsm({ cartItems }) {
         <div className="container">
   <div className="row">
     <div className="d-flex justify-content-center align-items-center border">
-      <div className="col-6 text-start border-end">
-        <p onClick={toggleMenuVisibility} style={{ cursor: 'pointer', marginTop:'10px' }}>Menu</p>
+      <div className="col-6 text-start border-end ">
+        <p className='text-center' onClick={toggleMenuVisibility} style={{ cursor: 'pointer', marginTop:'10px' }}>Menu</p>
       </div>
-      <div className="col-6 text-end">
-        <p onClick={toggleCatVisibility} style={{ cursor: 'pointer', marginTop:'10px' }}>Categorie</p>
+      <div className="col-6  ">
+        <p className='text-center' onClick={toggleCatVisibility} style={{ cursor: 'pointer', marginTop:'10px' }}>Categorie</p>
       </div>
     </div>
   </div>
@@ -200,7 +215,7 @@ function Navbarsm({ cartItems }) {
         
 
         {/* Fixed Bottom Navigation */}
-        <div className="bot d-lg-none   bg-white bot" style={{marginBottom:'75px'}}>
+        <div className="bot d-lg-none   bg-white bot" style={{marginBottom:''}}>
           <div className="border-top">
             <ul className="nav  nav-justified">
               <li className="nav-item text-center">
@@ -227,6 +242,8 @@ function Navbarsm({ cartItems }) {
           </div>
         </div>
       </div>
+      </div>
+      
       </nav>
       
       <Outlet />

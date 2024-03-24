@@ -33,7 +33,7 @@ useEffect(() =>{
       
     <div className="container mt-5 bg-white ">
         <div className="d-flex justify-content-between">
-             <h3 className="fea" >Featured product</h3>
+             <h3 className="fea text-danger" >Featured product</h3>
            </div>
    
          </div>
@@ -57,12 +57,12 @@ useEffect(() =>{
               
                 <div className="card-body">
                   <p className="card-title">{product.name}</p>
-                  <p className="star">  <StarRating /></p>
+                  
                   <p className="card-text text-success">
                     <strong>NGN{product.price}</strong>
                   </p>
                         <div className="btn-1">
-                        <button className="btn btn-success" onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                        <button className="btn btn-danger" onClick={() => handleAddToCart(product)}>Add to Cart</button>
                         </div>
                 </div>
               </div>

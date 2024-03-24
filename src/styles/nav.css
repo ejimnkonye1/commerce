@@ -3,3 +3,18 @@
         display: none;
     }
 }
+.cart-icon-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .count {
+    position: absolute;
+    top: -14px;
+    right: -8px;
+    background-color: red; /* Change this to your preferred color */
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 9px;
+  }

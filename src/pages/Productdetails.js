@@ -4,18 +4,29 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import initialProducts from "./productimg";
 import StarRating from "./star";
-
+import ColorAlerts from "../components/alert";
 function ProductDetails({ cartItems, setCartItems }) {
-  const [selectedSize, setSelectedSize] = useState("select");
+  const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1); // Default quantity is 1
   const { id } = useParams(); // Get the product ID from the route params
   const product = initialProducts[Number(id)]; // Access the product based on the ID
+  const [showToast, setShowToast] = useState(false);
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
   const handleAddToCart = () => {
+          // Check if a size is selected
+          if (!selectedSize) {
+            alert("Please select a size");
+            
+          
+        
+            return;
+         
+          }
+    
     // Check if the product is already in the cart
     const existingProduct = cartItems.find((item) => item.name === product.name);
 
@@ -32,12 +43,25 @@ function ProductDetails({ cartItems, setCartItems }) {
       };
       setCartItems([...cartItems, newItem]);
     }
+    setShowToast(true);
+
+    // Hide the toast after a delay (adjust as needed)
+    setTimeout(() => {
+      setShowToast(false);
+    }, 1000);
+
   };
 
  
 
   return (
     <div className="container mt-5">
+         {showToast && (
+     <div className="custom-toast">
+      <ColorAlerts />
+
+   </div>
+  )} 
     <div className="row">
       <div className="col-md-6  border">
         <img
@@ -51,7 +75,7 @@ function ProductDetails({ cartItems, setCartItems }) {
         <div className="" style={{ marginLeft: "20px" }}>
           <h2 className="mt-4">{product.name}</h2>
           <p>
-            <StarRating />
+   
           </p>
           <p className="text-primary">
             <strong>NGN{product.price}</strong>
@@ -69,8 +93,8 @@ function ProductDetails({ cartItems, setCartItems }) {
               onChange={(e) => setSelectedSize(e.target.value)}
             >
               <option value="select">Select</option>
-              <option value="1MP">1MP</option>
-              <option value="2MP">2MP</option>
+              <option value="1MP" className={`list-inline-item size-item ${selectedSize === '1mp' ? 'selected' : ''}`} onClick={() => setSelectedSize('1mp')}>1MP</option>
+              <option value="2MP" className={`list-inline-item size-item ${selectedSize === '2mp' ? 'selected' : ''}`} onClick={() => setSelectedSize('2mp')}>2MP</option>
             </select>
           </div>
 
@@ -82,7 +106,7 @@ function ProductDetails({ cartItems, setCartItems }) {
             </p>
             <button
               className="btn btn-light"
-              onClick={() => setQuantity(Math.max(quantity - 1, 1))}
+                 onClick={() => setQuantity(quantity + 1)}
             >
               -
             </button>
@@ -97,7 +121,7 @@ function ProductDetails({ cartItems, setCartItems }) {
 
           <p className="border-bottom mt-3"></p>
 
-          <button className="btn btn-success mb-3" onClick={handleAddToCart}>
+          <button className="btn btn-success mb-3" onClick={handleAddToCart} id="liveToastBtn">
             Add to Cart
           </button>
         </div>

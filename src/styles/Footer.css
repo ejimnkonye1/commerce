@@ -57,3 +57,9 @@ ul {
       }
   }
   
+  footer{
+    color: white !important;
+  }
+  footer a{
+    color: white !important;
+  }
