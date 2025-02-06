@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import initialProducts from "./productimg";
+import initialProducts from "../productimg";
 import { Link } from "react-router-dom";
 import '../styles/search.css'
 function SearchPage({ searchError }) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import Logo from '../images/logo.png';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import initialProducts from "../pages/productimg";
+import initialProducts from "../productimg";
 import '../styles/nav.css';
 
 function Navbarsm({ cartItems }) {

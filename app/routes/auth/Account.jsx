@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'; // Import the necessary functions
-import { auth } from '../Firebase'; // Import the Firebase auth object
+import { auth } from '../../Firebase'; // Import the Firebase auth object
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import Head from './Head';
+import Head from '../../components/Head';
 function MyAccount({loading}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
