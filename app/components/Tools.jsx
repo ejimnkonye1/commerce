@@ -35,7 +35,7 @@ function Tools() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-4">
+        <div className=" p-4">
           <div className="flex justify-center mb-4">
             <img src={toolImage2} alt="How to set up your account" className="w-3/4" />
           </div>
@@ -61,7 +61,7 @@ function Tools() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-4">
+        <div className=" p-4">
           <div className="flex justify-center mb-4">
             <img src={toolImage2} alt="How to track your usage" className="w-3/4" />
           </div>
@@ -87,7 +87,7 @@ function Tools() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-4">
+        <div className="p-4">
           <div className="flex justify-center mb-4">
             <img src={toolImage2} alt="How to use advanced features" className="w-3/4" />
           </div>
@@ -106,7 +106,7 @@ function Tools() {
               href="https://www.youtube.com/watch?v=VIDEO_ID"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-blue-600 hover:text-blue-800 "
             >
               Watch the tutorial
             </a>

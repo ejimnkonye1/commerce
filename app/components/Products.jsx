@@ -24,7 +24,7 @@ function Products({ cartItems, setCartItems }) {
     <section className=" bg-gray-300 p-10">
       <div className="container">
         <div className="flex justify-between">
-          <h3 className="text-red-500 text-xl font-sans font-bold">Featured Product</h3>
+          <h3 className="text-green-500 text-xl font-sans font-bold">Featured Product</h3>
         </div>
       </div>
       <section className=" p-1">

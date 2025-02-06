@@ -62,7 +62,7 @@ export default function Navbar1 ({ cartItems, loading }) {
         <div className="loader"></div>
       </div>
     ) : (
-      <nav className="bg-green-500">
+      <nav className="bg-gray-700">
         <div className="container mx-auto flex justify-between items-center p-4">
           
           {/* Contact Links */}
