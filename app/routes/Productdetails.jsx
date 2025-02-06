@@ -2,8 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import initialProducts from "./productimg";
-import StarRating from "./star";
+import initialProducts from "../productimg";
+// import StarRating from "./src/pages/star";
 import ColorAlerts from "../components/alert";
 function ProductDetails({ cartItems, setCartItems }) {
   const [selectedSize, setSelectedSize] = useState("");

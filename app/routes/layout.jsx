@@ -5,8 +5,8 @@ import images4 from "../images/v6.jpg";
 import images5 from "../images/v5.jpg";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import Products from "./Products";
-import Tools from "../Tools";
+import Products from "../components/Products";
+import Tools from "../components/Tools";
 import "../styles/layout.css";
 
 function Layout({ cartItems, setCartItems }) {

@@ -1,33 +1,40 @@
-# Estyne - E-Commerce App
+# Welcome to Remix!
 
-Welcome to Estyne, your premier destination for high-quality cameras! This e-commerce app allows users to explore our camera catalog, add products to their cart, and securely place orders. Estyne is built using HTML, CSS, JavaScript, React, Bootstrap for styling, and Firebase for user authentication and cart functionality.
+- 📖 [Remix docs](https://remix.run/docs)
 
-## Live Demo 🚀
+## Development
 
-Explore the live demo: https://estyne.onrender.com
+Run the dev server:
 
-## Technologies Used
+```shellscript
+npm run dev
+```
 
-- **HTML:** Markup language for building the structure of the app.
-- **CSS:** Stylesheet language for designing the app's appearance.
-- **JavaScript:** Programming language for adding interactivity to the app.
-- **React:** JavaScript library for building user interfaces.
-- **Bootstrap:** Front-end framework for responsive and stylish design.
-- **Firebase:** Cloud platform for authentication and real-time database functionality.
+## Deployment
 
-## Features
+First, build your app for production:
 
-- **Camera Catalog:** Browse through a curated selection of top-notch cameras with detailed descriptions.
-- **User Authentication:** Secure account creation and login using Firebase Authentication.
-- **Shopping Cart:** Add cameras to your cart for a seamless shopping experience.
-- **Order Placement:** Users can securely place orders after signing in.
-- **Responsive Design:** Ensures a consistent and enjoyable experience across devices.
+```sh
+npm run build
+```
 
-## User Authentication
-Users must create an account or log in before placing orders.
-Firebase is used for authentication. Ensure your Firebase configuration is set up correctly in the code.
+Then run the app in production mode:
 
-## Contributing
-Contributions are welcome! If you have ideas for improvements, new features, or want to fix a bug, feel free to open an issue or submit a pull request.
+```sh
+npm start
+```
 
-Enjoy your shopping experience at Estyne! 📷🛍️
+Now you'll need to pick a host to deploy it to.
+
+### DIY
+
+If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+- `build/server`
+- `build/client`
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.

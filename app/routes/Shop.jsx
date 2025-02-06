@@ -1,5 +1,5 @@
-import {React, useState} from 'react';
-import initialProducts from './productimg';
+import { useState} from 'react';
+import initialProducts from '../productimg';
 import { Link } from 'react-router-dom';
 import ProductDetails from './Productdetails';
 import CustomPagination from '../components/pagination';

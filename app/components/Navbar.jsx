@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
-import initialProducts from '../pages/productimg';
+// import initialProducts from '../productimg';
+import initialProducts from '../productimg';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 const Navbar = () => {

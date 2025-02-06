@@ -1,12 +1,12 @@
-import product1 from "../images/came1.jpeg";
-import product2 from "../images/came2.jpeg";
-import product3 from "../images/came3.jpeg";
+import product1 from "./images/came3.jpeg";
+import product2 from "./images/came2.jpeg";
+import product3 from "./images/came3.jpeg";
 
-import product5 from "../images/4g.jpg";
-import product6 from "../images/2mp survillance square.jpg";
-import product7 from "../images/360 degree rotation.jpg";
-import product8 from "../images/4g car gps tracker.jpg";
-import product4 from "../images/5mp 360 degree cctv.jpg";
+import product5 from "./images/4g.jpg";
+import product6 from "./images/2mp survillance square.jpg";
+import product7 from "./images/360 degree rotation.jpg";
+import product8 from "./images/4g car gps tracker.jpg";
+import product4 from "./images/5mp 360 degree cctv.jpg";
 
 
 const initialProducts = [
