@@ -1,8 +1,8 @@
 import { useState} from 'react';
 import initialProducts from '../productimg';
 import { Link } from 'react-router-dom';
-import ProductDetails from './Productdetails';
-import CustomPagination from '../components/pagination';
+
+
 function Shop({ cartItems, setCartItems }) {
 
 const handleAddToCart = (product) => {
@@ -95,12 +95,12 @@ const handleAddToCart = (product) => {
         </div>
       </div>
       <div className="d-flex justify-content-center">
-  <CustomPagination 
+  {/* <CustomPagination 
     currentPage={currentPage}
     totalPages={Math.ceil(currentProducts.length / productsPerPage)}
     prevPage={prevPage}
     nextPage={nextPage}
-  />
+  /> */}
 </div>
 
 
