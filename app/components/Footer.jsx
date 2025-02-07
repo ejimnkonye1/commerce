@@ -42,9 +42,6 @@ export default function Footer() {
                 <Link to="#" className="hover:underline">Privacy Policy</Link>
               </li>
               <li className="mb-4">
-                <Link to="#" className="hover:underline">Licensing</Link>
-              </li>
-              <li className="mb-4">
                 <Link to="#" className="hover:underline">Terms & Conditions</Link>
               </li>
             </ul>

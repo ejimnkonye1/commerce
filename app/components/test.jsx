@@ -7,7 +7,7 @@ export default function Test ()  {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const [location, setLocation] = useState("");
   return (
-    <nav className="bg-white dark:bg-gray-800 antialiased">
+    <nav className="bg-white dark:bg-gray-800 antialiased fixed top-[70px] left-0 w-full border-t border-white">
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-8">

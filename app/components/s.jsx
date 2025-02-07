@@ -13,7 +13,7 @@ export default function Second  () {
   const toggleCartDropdown = () => setIsCartDropdownOpen(!isCartDropdownOpen);
   const toggleUserDropdown = () => setIsUserDropdownOpen(!isUserDropdownOpen);
   return (
-    <nav className="flex items-center justify-between bg-white p-4 shadow-md bg-white dark:bg-gray-800 antialiased border-b" >
+    <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-white p-4  bg-white dark:bg-gray-800 antialiased  border-b border-1 border-white" >
 
     <div className="flex items-center gap-4">
   
