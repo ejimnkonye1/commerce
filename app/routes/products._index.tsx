@@ -63,7 +63,7 @@ export default function Products({ cartItems, setCartItems }) {
                     <img
                       className="p-8 rounded-t-lg w-full object-cover lg:h-[250px]"
                       src={product.image}
-                      alt={product.name}
+                      alt={product.name.toUpperCase()}
                     />
                   </Link>
                 </div>

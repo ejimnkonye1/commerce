@@ -10,12 +10,11 @@ export default function Index() {
   return (
     <div className="">
       {/* <Navbar1 cartItems={[]} loading={false} /> */}
-      <Second />
-      <Test/>
+    
   <MyHome />
   <Products cartItems={[]} setCartItems={[]} />
   <Tools />
-  <Footer />
+
     </div>
   );
 }
