@@ -24,7 +24,7 @@ const initialProducts = [
     name: "v380-mini-wifi",
     price: "6500.00",
     description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
-    quantity: 0,
+    
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const initialProducts = [
     name: "1mp-surveillance",
     price: "10000.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+  
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ const initialProducts = [
     name: "a9-mini-camera",
     price: "8000.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+   
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const initialProducts = [
     name: "360-degree-cctv",
     price: "1800.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+  
   },
   {
     id: 5,
@@ -60,7 +60,7 @@ const initialProducts = [
     name: "4g-camera",
     price: "8000.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+  
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const initialProducts = [
     name: "2mp-surveillance",
     price: "1800.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+  
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ const initialProducts = [
     name: "360-degree-rotation",
     price: "86000.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+    
   },
   {
     id: 8,
@@ -87,7 +87,7 @@ const initialProducts = [
     name: "car-gps-tracker",
     price: "6500.00",
     description: "The phrasal sequence of the Lorem Ipsum text...",
-    quantity: 0,
+   
   },
 ];
 

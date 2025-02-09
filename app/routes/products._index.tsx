@@ -1,29 +1,62 @@
-
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from 'react';
 import initialProducts from '../productimg';
-import { Link } from 'react-router-dom';
+import { Form, Link } from '@remix-run/react';
 
-import Second from '../components/s'
-import Footer from '../components/Footer'
-import Test from '../components/test'
-
-
-export default function Products({ cartItems, setCartItems }) {
-  const handleAddToCart = (product) => {
-    const existingProduct = cartItems.find((item) => item.name === product.name);
-
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-      setCartItems([...cartItems]);
-    } else {
-      product.quantity = 1;
-      setCartItems([...cartItems, product]);
-    }
-  };
-
+type Product = {
+  image: string;
+  name: string;
+  price: number;
+  description: string;
+  quantity: number;
+  id: number;
+  thumbnails: string[];
+}
+export default function Products() {
+  const [cart, setCart] = useState<Product[]>([]);
   const [currentProducts, setCurrentProducts] = useState(initialProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
+
+ 
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+  
+    if (storedCart) {
+      try {
+        const parsedCart = JSON.parse(storedCart) as Product[];
+        console.log("Loaded cart from localStorage:", parsedCart);
+        setCart(parsedCart);
+      } catch (error) {
+        console.error("Error parsing cart from localStorage:", error);
+        setCart([]); // Fallback to an empty cart if parsing fails
+      }
+    }
+  }, []);
+  
+  const addToCart = (product: Product) => {
+    const existingCart = JSON.parse(localStorage.getItem("cart") || '[]') as Product[];
+  
+    const existingItemIndex = existingCart.findIndex((cartItem) => cartItem.id === product.id);
+  
+    if (existingItemIndex !== -1) {
+      // If item already exists, update its quantity
+      existingCart[existingItemIndex].quantity += 1;
+    } else {
+      // If item is new, add it with quantity 1 (or any other default value)
+      existingCart.push({ ...product, quantity: 1 });
+    }
+    
+    console.log("Adding to cart:", product);
+    
+    // Update state and localStorage with the new cart
+    setCart(existingCart);
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+  
+    console.log("Updated cart:", existingCart);
+  };
+  
+  
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -43,12 +76,7 @@ export default function Products({ cartItems, setCartItems }) {
 
   return (
     <>
-    <section>
-
-  <Second />
-<Test />
-    </section>
-    <section className="mt-24 pt-[150px] p-10">
+      <section className="p-10">
         <div className="container mx-auto">
           <h5 className="text-center text-2xl text-gray-400 font-bold mb-6">Products</h5>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-[100px] p-4">
@@ -56,29 +84,27 @@ export default function Products({ cartItems, setCartItems }) {
               <div
                 className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm"
                 key={product.id}
-                
               >
                 <div className="flex justify-center border-b pb-4">
-                  <Link to={`/products/${product.id}`}> {/* Link to dynamic product details */}
+                  <Link to={`/products/${product.id}`}>
                     <img
                       className="p-8 rounded-t-lg w-full object-cover lg:h-[250px]"
                       src={product.image}
-                      alt={product.name.toUpperCase()}
+                      alt={product.name}
                     />
                   </Link>
                 </div>
                 <div className="px-5 pb-2 mt-4">
-                  {/* <Link to={`/products/${index}`}> */}
-                 < Link to={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <Link to={`/products/${product.id}`}>
                     <h5 className="lg:text-md text-sm font-semibold tracking-tight text-black">
-                      {product.name}
+                      {product.name.toUpperCase()}
                     </h5>
                   </Link>
                   <div className="flex items-center flex-col lg:flex-row lg:justify-between hidden lg:flex">
                     <span className="text-sm font-semibold text-red-600">₦{product.price}</span>
                     <button
+                      onClick={() => addToCart(product)}
                       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm lg:px-5 lg:py-2.5 px-2 py-2 text-lg mt-0"
-                      onClick={() => handleAddToCart(product)}
                     >
                       Add to cart
                     </button>
@@ -88,9 +114,7 @@ export default function Products({ cartItems, setCartItems }) {
                       <strong>₦{product.price}</strong>
                     </p>
                     <div className="text-center mt-4">
-                      <Link to={`/products/${product.id}`}>
-                        <button className="bg-blue-700 text-white text-sm py-2 px-4 rounded">Add to cart</button>
-                      </Link>
+                      <button className="bg-blue-700 text-white text-sm py-2 px-4 rounded">Add to cart</button>
                     </div>
                   </div>
                 </div>
@@ -98,6 +122,7 @@ export default function Products({ cartItems, setCartItems }) {
             ))}
           </div>
         </div>
+
         {/* Pagination */}
         <div className="flex justify-center mt-6">
           <nav aria-label="Page navigation example flex justify-center">
@@ -144,11 +169,6 @@ export default function Products({ cartItems, setCartItems }) {
           </nav>
         </div>
       </section>
-    <section>
-        <Footer />
-    </section>
     </>
- 
   );
 }
-
