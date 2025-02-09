@@ -5,9 +5,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import Footer from "./components/Footer";
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+import Second from "./components/s";
+import Test from "./components/test";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,9 +35,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Second />
+        <Test />
+        <main className="pt-[150px] ">
         {children}
+        </main>
+       
         <ScrollRestoration />
         <Scripts />
+<Footer />
       </body>
     </html>
   );
