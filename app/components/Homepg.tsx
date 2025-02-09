@@ -54,7 +54,7 @@ export default function MyHome() {
     return (
         <section>
             {/* Carousel Section */}
-            <div className="container mx-auto " id="hom">
+            <div className="container mx-auto z-1 " id="hom">
                 <div className="row">
                     <div className="col">
                         <Carousel
