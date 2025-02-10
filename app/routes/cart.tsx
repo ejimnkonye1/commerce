@@ -45,25 +45,19 @@ export default function Cart() {
   };
   const updateQuantity = (id: number, change: number) => {
     setCart((prevCart) => {
-      // Update the cart items with the new quantity
       const updatedCart = prevCart
         .map((item) =>
           item.id === id
-            ? { ...item, quantity: Math.max(0, item.quantity + change) } // Ensure quantity doesn't go below 1
+            ? { ...item, quantity: Math.max(1, item.quantity + change) }
             : item
         )
-        .filter((item) => item.quantity > 0); // Remove products with quantity 0
+        .filter((item) => item.quantity > 0);
   
-      // If the updated cart is empty, clear the cart from localStorage
-      if (updatedCart.length === 0) {
-        localStorage.removeItem("cart");
-      } else {
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
-      }
-  
+      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Persist changes immediately
       return updatedCart;
     });
   };
+  
   
   const totalPrice = cart.reduce((total, item) => total + (item.price) * item.quantity, 0);
 
@@ -107,15 +101,8 @@ export default function Cart() {
                       </div>
 
                       <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                        <Link to="#" className="text-base font-medium text-gray-900 hover:underline dark:text-white">{item.name}</Link>
+                        <Link to="#" className="text-base font-medium text-gray-900 hover:underline dark:text-white">{item.name.toUpperCase()}</Link>
                         <div className="flex items-center gap-4">
-                          <button type="button" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white">
-                            <svg className="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
-                            </svg>
-                            Add to Favorites
-                          </button>
-
                           <button type="button" onClick={() => removeFromCart(item.id)} className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
                             <svg className="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
@@ -143,20 +130,13 @@ export default function Cart() {
                   <dd className="text-base font-medium text-gray-900 dark:text-white">${totalPrice.toFixed(2)}</dd>
                 </dl>
 
-                <dl className="flex items-center justify-between gap-4">
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Savings</dt>
-                  <dd className="text-base font-medium text-green-600">-$299.00</dd>
-                </dl>
 
                 <dl className="flex items-center justify-between gap-4">
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
-                  <dd className="text-base font-medium text-gray-900 dark:text-white">$99</dd>
+                  <dd className="text-base font-medium text-gray-900 dark:text-white">₦3500</dd>
                 </dl>
 
-                <dl className="flex items-center justify-between gap-4">
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                  <dd className="text-base font-medium text-gray-900 dark:text-white">$799</dd>
-                </dl>
+             
               </div>
 
               <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
@@ -175,16 +155,6 @@ export default function Cart() {
                   </svg>
                 </Link>
               </div>
-            </div>
-
-            <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="voucher" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Do you have a voucher or gift card? </label>
-                  <input type="text" id="voucher" className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500" placeholder="" required />
-                </div>
-                <button type="submit" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Apply Code</button>
-              </form>
             </div>
           </div>
         </div>
