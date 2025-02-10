@@ -15,11 +15,11 @@ const OrderConfirmation = () => {
       
           <div className="space-y-4 sm:space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800 mb-6 md:mb-8">
             {[
-              { label: "Date", value: "14 May 2024" },
-              { label: "Payment Method", value: "JPMorgan monthly installments" },
-              { label: "Name", value: "Flowbite Studios LLC" },
-              { label: "Address", value: "34 Scott Street, San Francisco, California, USA" },
-              { label: "Phone", value: "+(123) 456 7890" }
+              { label: "Date", value: "12 May 2025" },
+              { label: "Payment Method", value: "Ibadan monthly installments" },
+              { label: "Name", value: "Ibadan Enterprises Ltd." },
+              { label: "Address", value: "123 Oluyole Estate, Ibadan, Oyo State, Nigeria" },
+              { label: "Phone", value: "+234 123 456 7890" }
             ].map((item, index) => (
               <dl key={index} className="sm:flex items-center justify-between gap-4">
                 <dt className="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">{item.label}</dt>

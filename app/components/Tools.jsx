@@ -5,7 +5,7 @@ import '../styles/About.css';
 
 function Tools() {
   return (
-    <div className="container mt-4 p-10">
+    <div className="container mt-4 p-10 border-t border-gray-700">
       <h5 className="text-xl font-semibold mb-4 text-black">Tutorials</h5>
     
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

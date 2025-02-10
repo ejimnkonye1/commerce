@@ -76,19 +76,19 @@ export default function Products() {
 
   return (
     <>
-      <section className="p-10">
+      <section className="lg:p-10 p-4">
         <div className="container mx-auto">
-          <h5 className="text-center text-2xl text-gray-400 font-bold mb-6">Products</h5>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-[100px] p-4">
+          <h5 className="text-center text-2xl text-gray-800 font-bold mb-6">Products</h5>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8  lg:gap-y-[50px] lg:p-4">
             {currentProductsPage.map((product) => (
               <div
-                className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm"
+                className="max-w-sm bg-white lg:w-[250px] rounded-lg border border-gray-100 bg-gray-50  dark:border-gray-700 dark:bg-gray-800"
                 key={product.id}
               >
-                <div className="flex justify-center border-b pb-4">
+                <div className="flex justify-center border-b ">
                   <Link to={`/products/${product.id}`}>
                     <img
-                      className="p-8 rounded-t-lg w-full object-cover lg:h-[250px]"
+                      className=" rounded-t-lg lg:w-[250px] object-cover lg:h-[250px]"
                       src={product.image}
                       alt={product.name}
                     />
@@ -96,12 +96,12 @@ export default function Products() {
                 </div>
                 <div className="px-5 pb-2 mt-4">
                   <Link to={`/products/${product.id}`}>
-                    <h5 className="lg:text-md text-sm font-semibold tracking-tight text-black">
+                    <h5 className="lg:text-md text-sm lg:font-semibold tracking-tight dark:text-white">
                       {product.name.toUpperCase()}
                     </h5>
                   </Link>
                   <div className="flex items-center flex-col lg:flex-row lg:justify-between hidden lg:flex">
-                    <span className="text-sm font-semibold text-red-600">₦{product.price}</span>
+                    <span className="text-sm font-semibold text-gray-300">₦{product.price}</span>
                     <button
                       onClick={() => addToCart(product)}
                       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm lg:px-5 lg:py-2.5 px-2 py-2 text-lg mt-0"
@@ -110,7 +110,7 @@ export default function Products() {
                     </button>
                   </div>
                   <div className="lg:hidden block flex-grow">
-                    <p className="text-red-600 font-semibold text-sm">
+                    <p className="text-gray-300 lg:font-semibold text-sm">
                       <strong>₦{product.price}</strong>
                     </p>
                     <div className="text-center mt-4">

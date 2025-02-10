@@ -2,7 +2,7 @@
 import { Link } from '@remix-run/react';
 import { useState } from 'react';
 
-export default function Test ()  {
+export default function Navbar2 ()  {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const [location, setLocation] = useState("");
