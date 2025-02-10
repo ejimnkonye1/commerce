@@ -7,10 +7,16 @@ export default function Navbar1() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [IsSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
 
   const toggleCartDropdown = () => setIsCartDropdownOpen(!isCartDropdownOpen);
   const toggleUserDropdown = () => setIsUserDropdownOpen(!isUserDropdownOpen);
 
+  const handleSearchDropdown = () => {
+    setIsSearchDropdownOpen(!IsSearchDropdownOpen);
+    
+
+  }
   const handleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
     console.log("Cart Dropdown Toggled:", !isDropdownOpen);
@@ -18,11 +24,13 @@ export default function Navbar1() {
   }
  
   return (
-    <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-white p-4 bg-white dark:bg-gray-800 antialiased border-b border-1 border-white z-20">
+    <section>
+
+<nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-white p-4 bg-white dark:bg-gray-800 antialiased border-b border-1 border-white z-20">
       <div className="flex items-center gap-4">
         <div className="text-xl font-bold">Estyne</div>
 
-        <div className="flex items-center dark:bg-gray-800 border rounded-md overflow-hidde">
+        <div className="flex items-center dark:bg-gray-800 border rounded-md overflow-hidde hidden lg:flex">
           {/* All Categories Dropdown */}
           <div
       className="relative inline-block"
@@ -111,6 +119,18 @@ export default function Navbar1() {
       </div>
 
       <div className="flex items-center lg:space-x-2">
+      <button
+              type="button"
+              onClick={handleSearchDropdown}
+              aria-controls="ecommerce-navbar-menu-1"
+              aria-expanded={IsSearchDropdownOpen}
+              className="inline-flex lg:hidden items-center justify-center hover:bg-gray-100 rounded-md dark:hover:bg-gray-700 p-2 text-gray-900 dark:text-white"
+            >
+              <span className="sr-only">Open Menu</span>
+         
+              <span className="w-5 h-5 me-1" ><CiSearch />
+                </span>             
+            </button>
         <button
           id="myCartDropdownButton1"
           onClick={toggleCartDropdown}
@@ -139,8 +159,8 @@ export default function Navbar1() {
           <svg className="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" strokeWidth="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
           </svg>
-          Account
-          <svg className="w-4 h-4 text-gray-900 dark:text-white ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+       <span className='hidden lg:flex'>   Account</span>
+          <svg className="w-4 h-4 hidden lg:flex text-gray-900 dark:text-white ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 9-7 7-7-7"/>
           </svg>
         </button>
@@ -161,6 +181,12 @@ export default function Navbar1() {
           </div>
         )}
       </div>
+      
     </nav>
+   
+
+
+    </section>
+   
   );
 }
