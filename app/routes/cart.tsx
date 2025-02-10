@@ -126,13 +126,13 @@ export default function Cart() {
 
               <div className="space-y-4">
                 <dl className="flex items-center justify-between gap-4">
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Original price</dt>
+                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Subtotal</dt>
                   <dd className="text-base font-medium text-gray-900 dark:text-white">${totalPrice.toFixed(2)}</dd>
                 </dl>
 
 
                 <dl className="flex items-center justify-between gap-4">
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
+                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Delivery Fee</dt>
                   <dd className="text-base font-medium text-gray-900 dark:text-white">₦3500</dd>
                 </dl>
 
@@ -141,7 +141,7 @@ export default function Cart() {
 
               <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
                 <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                <dd className="text-base font-bold text-gray-900 dark:text-white">${(totalPrice + 99 + 799 - 299).toFixed(2)}</dd>
+                <dd className="text-base font-bold text-gray-900 dark:text-white">${(totalPrice + 3500 ).toFixed(2)}</dd>
               </dl>
 
               <Link to="/checkout" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</Link>
