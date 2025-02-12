@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 
-import { NavLink } from "@remix-run/react";
+import { NavLink, useLocation } from "@remix-run/react";
 
 
 export function Sidebar () {
-
+    const location = useLocation();
 
   return (
     <div className='p-4 lg:p-10' >
@@ -14,7 +14,7 @@ export function Sidebar () {
 
       <aside
   id="separator-sidebar"
-  className={`  z-40 w-64 lg:w-[20%]  transition-transform duration-300 `}
+  className={`  z-40 w-64   transition-transform duration-300 `}
 >
 
 
@@ -24,7 +24,7 @@ export function Sidebar () {
         <ul className="p-0 m-0 border-b border-slate-200 dark:border-neutral-800"> 
     <li className="">
       <NavLink
-        to="#"
+        to="/dash/account"
         className="flex items-center justify-center text-gray-900 rounded-lg dark:text-white"
       >
    
@@ -56,8 +56,8 @@ export function Sidebar () {
             </li>
             <li  className="mb-4">
               <NavLink
-                to="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                to="/dash/order"
+                className={`block py-2 px-4 ${location.pathname.includes("order") ? "bg-gray-700" : ""}`}
               >
                 <span  className=" text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white"></span>
                 <span className="ms-3 text-white">Orders</span>

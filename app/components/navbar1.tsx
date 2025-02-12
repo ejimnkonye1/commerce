@@ -196,12 +196,9 @@ export default function Navbar1() {
         {isUserDropdownOpen && (
           <div id="userDropdown1" className="absolute top-[50px] z-10 w-56 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow dark:divide-gray-600 dark:bg-gray-700 z-20">
             <ul className="p-2 text-start text-sm font-medium text-gray-900 dark:text-white">
-              <li><Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">My Account</Link></li>
-              <li><Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">My Orders</Link></li>
-              <li><Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Settings</Link></li>
-              <li><Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Favourites</Link></li>
-              <li><Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Delivery Addresses</Link></li>
-              <li><Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Billing Data</Link></li>
+              <li><Link to="/dash" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Profile</Link></li>
+              <li><Link to="/dash/order" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Orders</Link></li>
+              <li><Link to="/dash/setting" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Settings</Link></li>
             </ul>
             <div className="p-2 text-sm font-medium text-gray-900 dark:text-white">
               <Link to="#" title="" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Sign Out</Link>
