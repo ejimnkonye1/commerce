@@ -61,13 +61,13 @@ export default function Cart() {
   
   const totalPrice = cart.reduce((total, item) => total + (item.price) * item.quantity, 0);
 
-
+  
   return (
  
 
     <section className="bg-white py-8 antialiased lg:p-7 p-4 md:py-16">
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-900 sm:text-2xl">Shopping Cart</h2>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-900 sm:text-2xl">Shopping Cart {cart.length}</h2>
 
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
@@ -115,7 +115,7 @@ export default function Cart() {
                   </div>
                 ))
               ) : (
-                <p>Your cart is empty</p>
+                <p className="text-gray-900 text-center">Your cart is empty</p>
               )}
             </div>
           </div>

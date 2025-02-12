@@ -46,7 +46,7 @@ export default function Products() {
       // If item is new, add it with quantity 1 (or any other default value)
       existingCart.push({ ...product, quantity: 1 });
     }
-    
+    console.log(cart.length,"cart length")
     console.log("Adding to cart:", product);
     
     // Update state and localStorage with the new cart
