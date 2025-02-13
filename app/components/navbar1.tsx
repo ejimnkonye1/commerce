@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { Form, Link, } from "@remix-run/react";
 import  { CartModal } from '../modal/cart'
+import { useCart } from "~/context/cartcontext";
+
 type Item = {
   image: string;
   name: string;
@@ -12,6 +14,7 @@ type Item = {
   thumbnails: string[];
 }
 export default function Navbar1() {
+ const { cart} = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
@@ -31,23 +34,7 @@ export default function Navbar1() {
     console.log("Cart Dropdown Toggled:", !isDropdownOpen);
 
   }
-   const [cart, setCart] = useState<Item[]>([]);
- 
 
-   useEffect(() => {
-     const storedCart = localStorage.getItem("cart");
-   
-     if (storedCart) {
-       try {
-         const parsedCart = JSON.parse(storedCart) as Item[];
-         console.log("Loaded cart from localStorage:", parsedCart);
-         setCart(parsedCart);
-       } catch (error) {
-         console.error("Error parsing cart from localStorage:", error);
-         setCart([]); // Fallback to an empty cart if parsing fails
-       }
-     }
-   }, []);
   return (
     <section>
 
@@ -176,6 +163,8 @@ export default function Navbar1() {
         </button>
      <CartModal 
      isCartDropdownOpen={isCartDropdownOpen}
+     cart={cart}
+    
      />
 
         <button

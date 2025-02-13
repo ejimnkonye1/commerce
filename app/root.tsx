@@ -12,7 +12,7 @@ import "./tailwind.css";
 
 import Navbar1 from "./components/navbar1";
 import Navbar2 from "./components/navbar2";
-
+import { CartProvider } from "./context/cartcontext";
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -36,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Navbar1 />
+        {/* <Navbar1 /> */}
         <Navbar2 />
         <main className="pt-[150px] ">
         {children}
@@ -51,5 +51,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return(
+    <CartProvider>
+    <Layout>
+      <Navbar1 />
+      <Outlet />
+    </Layout>
+  </CartProvider>
+  ) 
 }

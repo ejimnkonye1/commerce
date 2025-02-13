@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@remix-run/react";
+import { useCart } from "~/context/cartcontext";
 
 type Item = {
   image: string;
@@ -11,55 +12,10 @@ type Item = {
   thumbnails: string[];
 }
 export default function Cart() {
-  const [cart, setCart] = useState<Item[]>([]);
+  const { cart,  removeFromCart, updateQuantity } = useCart();
 
-
-  // useEffect(() => {
-  //   const storedCart = JSON.parse(localStorage.getItem("cart") || "[]") as Item[];
-
-  //   console.log("Loaded cart from localStorage:", storedCart);
-  //   setCart(storedCart);
-  // }, []);
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-  
-    if (storedCart) {
-      try {
-        const parsedCart = JSON.parse(storedCart) as Item[];
-        console.log("Loaded cart from localStorage:", parsedCart);
-        setCart(parsedCart);
-      } catch (error) {
-        console.error("Error parsing cart from localStorage:", error);
-        setCart([]); // Fallback to an empty cart if parsing fails
-      }
-    }
-  }, []);
-  const removeFromCart = (id:number) => {
-    console.log("Removing item with ID:", id);
-
-    const updatedCart = cart.filter((item) => item.id !== id);
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    console.log("Updated cart after removal:", updatedCart);
-  };
-  const updateQuantity = (id: number, change: number) => {
-    setCart((prevCart) => {
-      const updatedCart = prevCart
-        .map((item) =>
-          item.id === id
-            ? { ...item, quantity: Math.max(1, item.quantity + change) }
-            : item
-        )
-        .filter((item) => item.quantity > 0);
-  
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Persist changes immediately
-      return updatedCart;
-    });
-  };
-  
-  
   const totalPrice = cart.reduce((total, item) => total + (item.price) * item.quantity, 0);
+
 
   
   return (

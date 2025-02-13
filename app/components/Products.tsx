@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import initialProducts from "../productimg";
+import { useCart } from "~/context/cartcontext";
 
 type Product = {
   image: string;
@@ -14,45 +15,11 @@ type Product = {
   thumbnails: string[];
 }
 function Products() {
-  const [cart, setCart] = useState<Product[]>([]);
-
+  const {  addToCart } = useCart();
   const [currentProducts] = useState(initialProducts);
  
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-  
-    if (storedCart) {
-      try {
-        const parsedCart = JSON.parse(storedCart) as Product[];
-        console.log("Loaded cart from localStorage:", parsedCart);
-        setCart(parsedCart);
-      } catch (error) {
-        console.error("Error parsing cart from localStorage:", error);
-        setCart([]); // Fallback to an empty cart if parsing fails
-      }
-    }
-  }, []);
-  
-  const addToCart = (product: Product) => {
-    const existingCart = JSON.parse(localStorage.getItem("cart") || '[]') as Product[];
-  
-    const existingItemIndex = existingCart.findIndex((cartItem) => cartItem.id === product.id);
-  
-    if (existingItemIndex !== -1) {
-      // If item already exists, update its quantity
-      existingCart[existingItemIndex].quantity += 1;
-    } else {
-      // If item is new, add it with quantity 1 (or any other default value)
-      existingCart.push({ ...product, quantity: 1 });
-    }
-    
-    console.log("Adding to cart:", product);
-    
-    // Update state and localStorage with the new cart
-    setCart(existingCart);
-    localStorage.setItem("cart", JSON.stringify(existingCart));
-  
-    console.log("Updated cart:", existingCart);
+  const handleAddToCart = () => {
+    addToCart(product); // Add the product to the cart
   };
   return (
     <section className=" p-4 lg:p-10">

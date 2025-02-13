@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext, useCart } from "~/context/cartcontext";
 
 type Item = {
   image: string;
@@ -10,32 +11,16 @@ type Item = {
   id: number;
   thumbnails: string[];
 }
+type CartModalProps = {
+   isCartDropdownOpen: boolean;
+  cart: Item[];
+  removeFromCart: (itemId: number) => void;
+};
 
-export function CartModal ({isCartDropdownOpen}){
-   const [cart, setCart] = useState<Item[]>([]);
-    useEffect(() => {
-      const storedCart = localStorage.getItem("cart");
-    
-      if (storedCart) {
-        try {
-          const parsedCart = JSON.parse(storedCart) as Item[];
-          console.log("Loaded cart from localStorage:", parsedCart);
-          setCart(parsedCart);
-        } catch (error) {
-          console.error("Error parsing cart from localStorage:", error);
-          setCart([]); // Fallback to an empty cart if parsing fails
-        }
-      }
-    }, []);
-    const removeFromCart = (id:number) => {
-      console.log("Removing item with ID:", id);
-  
-      const updatedCart = cart.filter((item) => item.id !== id);
-      setCart(updatedCart);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-  
-      console.log("Updated cart after removal:", updatedCart);
-    };
+export function CartModal({ isCartDropdownOpen, cart, removeFromCart }: CartModalProps) {
+  const handleRemoveCart = (itemId: number) => {
+    removeFromCart(itemId); 
+};
     return(
         <>
        {isCartDropdownOpen && (
@@ -51,7 +36,7 @@ export function CartModal ({isCartDropdownOpen}){
               </div>
               <div className="flex items-center justify-end gap-6">
                 <p className="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: {item.quantity}</p>
-                <button type="button" onClick={() => removeFromCart(item.id)}  className="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                <button type="button" onClick={() => handleRemoveCart(item.id)} className="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
                   <span className="sr-only">Remove</span>
                   <svg className="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fillRule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clipRule="evenodd" />

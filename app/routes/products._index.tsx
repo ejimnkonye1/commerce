@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import initialProducts from '../productimg';
 import { Form, Link } from '@remix-run/react';
+import { CartContext, useCart } from '~/context/cartcontext';
 
 type Product = {
   image: string;
@@ -13,48 +14,13 @@ type Product = {
   thumbnails: string[];
 }
 export default function Products() {
-  const [cart, setCart] = useState<Product[]>([]);
+  // const [cart, setCart] = useState<Product[]>([]);
+  const {  addToCart } = useCart();
   const [currentProducts, setCurrentProducts] = useState(initialProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
  
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-  
-    if (storedCart) {
-      try {
-        const parsedCart = JSON.parse(storedCart) as Product[];
-        console.log("Loaded cart from localStorage:", parsedCart);
-        setCart(parsedCart);
-      } catch (error) {
-        console.error("Error parsing cart from localStorage:", error);
-        setCart([]); // Fallback to an empty cart if parsing fails
-      }
-    }
-  }, []);
-  
-  const addToCart = (product: Product) => {
-    const existingCart = JSON.parse(localStorage.getItem("cart") || '[]') as Product[];
-  
-    const existingItemIndex = existingCart.findIndex((cartItem) => cartItem.id === product.id);
-  
-    if (existingItemIndex !== -1) {
-      // If item already exists, update its quantity
-      existingCart[existingItemIndex].quantity += 1;
-    } else {
-      // If item is new, add it with quantity 1 (or any other default value)
-      existingCart.push({ ...product, quantity: 1 });
-    }
-    console.log(cart.length,"cart length")
-    console.log("Adding to cart:", product);
-    
-    // Update state and localStorage with the new cart
-    setCart(existingCart);
-    localStorage.setItem("cart", JSON.stringify(existingCart));
-  
-    console.log("Updated cart:", existingCart);
-  };
   
   
 
@@ -72,6 +38,9 @@ export default function Products() {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
+  };
+  const handleAddToCart = () => {
+    addToCart(product); // Add the product to the cart
   };
 
   return (
@@ -103,7 +72,7 @@ export default function Products() {
                   <div className="flex items-center flex-col lg:flex-row lg:justify-between hidden lg:flex">
                     <span className="text-sm font-semibold text-gray-300">₦{product.price}</span>
                     <button
-                      onClick={() => addToCart(product)}
+                      onClick={handleAddToCart}
                       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm lg:px-5 lg:py-2.5 px-2 py-2 text-lg mt-0"
                     >
                       Add to cart
