@@ -1,6 +1,4 @@
 import { Link } from "@remix-run/react";
-import { useContext, useEffect, useState } from "react";
-import { CartContext, useCart } from "~/context/cartcontext";
 
 type Item = {
   image: string;

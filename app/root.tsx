@@ -38,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {/* <Navbar1 /> */}
         <Navbar2 />
-        <main className="pt-[150px] ">
+        <main className="pt-[70px] ">
         {children}
         </main>
        

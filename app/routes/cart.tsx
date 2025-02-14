@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+
 import { Link } from "@remix-run/react";
 import { useCart } from "~/context/cartcontext";
 
-type Item = {
-  image: string;
-  name: string;
-  price: number;
-  description: string;
-  quantity: number;
-  id: number;
-  thumbnails: string[];
-}
+// type Item = {
+//   image: string;
+//   name: string;
+//   price: number;
+//   description: string;
+//   quantity: number;
+//   id: number;
+//   thumbnails: string[];
+// }
 export default function Cart() {
   const { cart,  removeFromCart, updateQuantity } = useCart();
 

@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { Form, Link, } from "@remix-run/react";
 import  { CartModal } from '../modal/cart'
 import { useCart } from "~/context/cartcontext";
 
-type Item = {
-  image: string;
-  name: string;
-  price: number;
-  description: string;
-  quantity: number;
-  id: number;
-  thumbnails: string[];
-}
+// type Item = {
+//   image: string;
+//   name: string;
+//   price: number;
+//   description: string;
+//   quantity: number;
+//   id: number;
+//   thumbnails: string[];
+// }
+
 export default function Navbar1() {
- const { cart} = useCart();
+ const { cart,removeFromCart} = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
@@ -164,6 +165,7 @@ export default function Navbar1() {
      <CartModal 
      isCartDropdownOpen={isCartDropdownOpen}
      cart={cart}
+     removeFromCart={removeFromCart}
     
      />
 

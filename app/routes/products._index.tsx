@@ -20,9 +20,6 @@ export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
- 
-  
-  
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -40,7 +37,7 @@ export default function Products() {
     }
   };
   const handleAddToCart = () => {
-    addToCart(product); // Add the product to the cart
+    addToCart(product); 
   };
 
   return (
