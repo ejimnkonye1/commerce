@@ -1,8 +1,8 @@
 import { json, LoaderFunction } from "@remix-run/node";
 import { useLoaderData, Link, useSearchParams } from "@remix-run/react";
-import { auth, firestore } from "../Firebase"; 
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { v4 as uuidv4 } from "uuid";
+import {  firestore } from "../Firebase"; 
+import { doc, getDoc,  } from "firebase/firestore";
+
 import { useEffect } from "react";
 import { useCart } from "~/context/cartcontext";
 

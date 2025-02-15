@@ -1,6 +1,6 @@
 import { ActionFunction, json, redirect } from "@remix-run/node";
-import { Form, Link, useNavigation,  } from "@remix-run/react";
-import { arrayUnion, collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import { Form, useNavigation,  } from "@remix-run/react";
+import {  collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { useCart } from "~/context/cartcontext";
 import { auth, firestore } from "../Firebase";
 import { v4 as uuidv4 } from "uuid";

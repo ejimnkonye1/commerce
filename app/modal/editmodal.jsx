@@ -37,4 +37,4 @@ export default  function EditModal  ({ isOpen, onClose, title, fields, onSubmit 
         </div>
       </div>
     );
-  };
+  }
