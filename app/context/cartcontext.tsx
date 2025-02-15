@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, ReactNode, useContext } from "react";
+import { createContext, useState, useEffect, ReactNode, useContext, useCallback } from "react";
 
 type Product = {
   image: string;
@@ -81,11 +81,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   };
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCart([]);
     localStorage.removeItem("cart"); // Remove from localStorage
     console.log("Cart cleared after successful payment");
-  };
+  }, []);
+  
   return (
     <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, updateQuantity, clearCart }}>
       {children}

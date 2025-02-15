@@ -1,8 +1,10 @@
 import { json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData, Link } from "@remix-run/react";
+import { useLoaderData, Link, useSearchParams } from "@remix-run/react";
 import { auth, firestore } from "../Firebase"; 
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
+import { useCart } from "~/context/cartcontext";
 
 type LoaderData = {
   orderId: string;
@@ -44,7 +46,16 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function OrderConfirmation() {
   const order = useLoaderData<LoaderData>(); 
+  const [searchParams] = useSearchParams();
+  const { clearCart } = useCart();
 
+  useEffect(() => {
+      // Check if the order was successful
+      if (searchParams.get("success") === "true") {
+          console.log("Clearing cart...");
+          clearCart();
+      }
+  }, [searchParams]);
   return (
     <section className="bg-white py-8 antialiased md:py-16">
       <div className="mx-auto max-w-2xl px-4 2xl:px-0">

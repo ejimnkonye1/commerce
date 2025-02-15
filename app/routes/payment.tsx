@@ -43,32 +43,30 @@ export const action: ActionFunction = async ({ request }) => {
         };
         await setDoc(doc(collection(firestore, "orders"), orderId), orderData);
         return redirect(`/order?orderId=${orderId}&success=true`);
-
-        // return redirect(`/order?orderId=${orderId}`);
     } catch (error: any) {
         return json({ error: error.message }, { status: 500 });
     }
 };
 
-
 const Checkout = () => {
     const { cart, clearCart } = useCart();
-    
     const totalPrice = cart.reduce((total, item) => total + (item.price) * item.quantity, 0);
     const actionData = useActionData(); // Get response from action
     const navigation = useNavigation(); // Detect when form is submitting
     const isSubmitting = navigation.state === "submitting";
+    const [searchParams] = useSearchParams(); // Get query parameters from the URL
+
     useEffect(() => {
         // Check if order was placed successfully and clear cart
-        if (actionData?.orderId) {
+        if (actionData && searchParams.get("success") === "true") {
+            console.log("clear cart")
             clearCart();
         }
-    }, [actionData]);
+    }, [searchParams, clearCart, actionData]);
+
     return (
         <section className="bg-white py-8 antialiased  md:py-16 p-10">
-          <Form method="post" 
-          
-          className="mx-auto max-w-screen-xl px-4 2xl:px-0">
+          <Form method="post" className="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <div className="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
               <div className="min-w-0 flex-1 space-y-8 grid grid-cols-1 gap-4 lg:grid-cols-3 ">
                 <div className="space-y-4 lg:col-span-2 rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
@@ -81,7 +79,6 @@ const Checkout = () => {
                         type="text"
                         id="firstName"
                         name="firstName"
-              
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="Bonnie"
                         required
@@ -94,7 +91,6 @@ const Checkout = () => {
                         type="text"
                         id="lastName"
                         name="lastName"
-                     
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="Paul"
                         required
@@ -107,7 +103,6 @@ const Checkout = () => {
                         type="email"
                         id="email"
                         name="email"
-                        
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="name@gmail.com"
                         required
@@ -120,7 +115,6 @@ const Checkout = () => {
                         type="text"
                         id="number"
                         name="number"
-                    
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="123-456-7890"
                         required
@@ -133,7 +127,6 @@ const Checkout = () => {
                         type="text"
                         id="address"
                         name="address"
-                        
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="123 Main St"
                         required
@@ -146,7 +139,6 @@ const Checkout = () => {
                         type="text"
                         id="city"
                         name="city"
-                    
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="Samagu"
                         required
@@ -159,7 +151,6 @@ const Checkout = () => {
                         type="text"
                         id="state"
                         name="state"
-                       
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="Ibandan"
                         required
@@ -172,7 +163,6 @@ const Checkout = () => {
                         type="text"
                         id="zip"
                         name="zip"
-                      
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                         placeholder="94103"
                         required
@@ -212,16 +202,11 @@ const Checkout = () => {
       </div>
     </div>
                   </div>
-    
-    
-    
-           
               </div>
             </div>
           </Form>
         </section>
       );
-  };
-  
-  export default  Checkout;
-  
+};
+
+export default Checkout;
