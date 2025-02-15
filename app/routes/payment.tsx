@@ -1,10 +1,10 @@
 import { ActionFunction, json, redirect } from "@remix-run/node";
-import { Form, Link, useActionData, useNavigation, useSearchParams } from "@remix-run/react";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { Form, Link, useNavigation,  } from "@remix-run/react";
+import { arrayUnion, collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { useCart } from "~/context/cartcontext";
 import { auth, firestore } from "../Firebase";
 import { v4 as uuidv4 } from "uuid";
-import { useEffect } from "react";
+
 
 export const action: ActionFunction = async ({ request }) => {
     const formData = await request.formData();
@@ -41,7 +41,20 @@ export const action: ActionFunction = async ({ request }) => {
             zip,
             createdAt: new Date().toISOString(),
         };
+          const orderemail = email
         await setDoc(doc(collection(firestore, "orders"), orderId), orderData);
+        const userDocRef = doc(firestore, "users", userId);
+        await updateDoc(userDocRef, {
+           
+                 firstName,
+                 lastName,
+                 number,
+                 address,
+                 city,
+                 state,
+                 orderemail,
+            
+        });
         return redirect(`/order?orderId=${orderId}&success=true`);
     } catch (error: any) {
         return json({ error: error.message }, { status: 500 });
@@ -49,20 +62,11 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 const Checkout = () => {
-    const { cart, clearCart } = useCart();
+    const { cart } = useCart();
     const totalPrice = cart.reduce((total, item) => total + (item.price) * item.quantity, 0);
-    const actionData = useActionData(); // Get response from action
     const navigation = useNavigation(); // Detect when form is submitting
-    const isSubmitting = navigation.state === "submitting";
-    const [searchParams] = useSearchParams(); // Get query parameters from the URL
+    const isSubmitting = navigation.state === "submitting"; 
 
-    useEffect(() => {
-        // Check if order was placed successfully and clear cart
-        if (actionData && searchParams.get("success") === "true") {
-            console.log("clear cart")
-            clearCart();
-        }
-    }, [searchParams, clearCart, actionData]);
 
     return (
         <section className="bg-white py-8 antialiased  md:py-16 p-10">
