@@ -58,7 +58,7 @@ export default function ProductDetail() {
     setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
   return (
-    <div className="bg-gray-400">
+    <div className="">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-wrap -mx-4">
           {/* Product Images */}
@@ -66,7 +66,7 @@ export default function ProductDetail() {
   <img
     src={mainImage} // Display the main image from state
     alt="Product"
-    className="w-[500px] h-[370px] rounded-lg shadow-md mb-4 object-cover mx-auto"
+    className="w-[500px] h-[370px] rounded-lg border border-gray-100 bg-gray-50  dark:border-gray-700 dark:bg-gray-800 mb-4 object-cover mx-auto"
     id="mainImage"
   />
 
@@ -75,7 +75,7 @@ export default function ProductDetail() {
       <button
         key={index}
         onClick={() => changeImage(thumbnail)}
-        className="size-16 sm:size-20 object-cover rounded-md opacity-60 hover:opacity-100 transition duration-300"
+        className="size-16 sm:size-20 object-cover rounded-lg border border-gray-100 bg-gray-50  dark:border-gray-700 dark:bg-gray-800 opacity-60 hover:opacity-100 transition duration-300"
         aria-label={`Thumbnail ${index + 1}`}
       >
         <img
@@ -91,14 +91,14 @@ export default function ProductDetail() {
 
           {/* Product Details */}
           <div className="w-full md:w-1/2 px-4">
-            <h2 className="text-3xl font-bold mb-2 text-white">{product.name.toUpperCase()}</h2>
-            {/* <p className="text-gray-600 mb-4">SKU: {product.sku}</p> */}
+            <h2 className="text-3xl font-bold mb-2 dark:text-gray-800 text-white">{product.name.toUpperCase()}</h2>
+
             <div className="mb-4">
-              <span className="text-2xl font-bold mr-2 text-red-600">${product.price}</span>
+              <span className="text-2xl font-bold mr-2 text-gray-600">${product.price}</span>
               <span className="text-gray-500 line-through ">$399.99</span>
             </div>
             
-            <p className=" mb-6 text-white">{product.description}</p>
+            <p className=" mb-6 text-white dark:text-gray-700">{product.description}</p>
             <div className="mb-6 w-[20px] ">
               <label htmlFor="quantity" className="block text-sm font-medium text-white mb-1">Quantity:</label>
 

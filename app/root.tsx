@@ -9,9 +9,10 @@ import Footer from "./components/Footer";
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
-import Second from "./components/s";
-import Test from "./components/test";
 
+import Navbar1 from "./components/navbar1";
+import Navbar2 from "./components/navbar2";
+import { CartProvider } from "./context/cartcontext";
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -35,9 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Second />
-        <Test />
-        <main className="pt-[150px] ">
+        {/* <Navbar1 /> */}
+        <Navbar2 />
+        <main className="pt-[70px] ">
         {children}
         </main>
        
@@ -50,5 +51,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return(
+    <CartProvider>
+    <Layout>
+      <Navbar1 />
+      <Outlet />
+    </Layout>
+  </CartProvider>
+  ) 
 }
