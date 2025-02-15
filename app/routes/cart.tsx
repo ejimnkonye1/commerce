@@ -1,30 +1,49 @@
 
-import { Link } from "@remix-run/react";
+import { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { Form, Link, redirect, useLoaderData, useNavigate } from "@remix-run/react";
 import { useCart } from "~/context/cartcontext";
+import { auth } from "~/Firebase";
 
-// type Item = {
-//   image: string;
-//   name: string;
-//   price: number;
-//   description: string;
-//   quantity: number;
-//   id: number;
-//   thumbnails: string[];
-// }
+
+type  User = {
+  email? : string;
+  // name : string;
+}
+export const loader: LoaderFunction = async ({ request }) => {
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    // Redirect to login if user is not authenticated
+    return redirect("/login");
+  }
+
+  return { user };
+};
+
+
 export default function Cart() {
+  const { user } = useLoaderData<{user: User}>();
   const { cart,  removeFromCart, updateQuantity } = useCart();
 
   const totalPrice = cart.reduce((total, item) => total + (item.price) * item.quantity, 0);
+  const navigate = useNavigate();
 
-
+  const handleCheckout = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      navigate("/payment");
+    }
+  };
   
   return (
  
 
     <section className="bg-white py-8 antialiased lg:p-7 p-4 md:py-16">
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-900 sm:text-2xl">Shopping Cart {cart.length}</h2>
-
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-900 sm:text-2xl">Shopping Cart {cart.length}   <p>Welcome, {user.email}</p></h2>
+   
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
             <div className="space-y-6">
@@ -99,9 +118,14 @@ export default function Cart() {
                 <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
                 <dd className="text-base font-bold text-gray-900 dark:text-white">${(totalPrice + 3500 ).toFixed(2)}</dd>
               </dl>
-
-              <Link to="/checkout" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</Link>
-
+              <button
+  type="button"
+  onClick={handleCheckout}
+  className="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+>
+  Proceed to Checkout
+</button>
+        
               <div className="flex items-center justify-center gap-2">
                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
                 <Link to="/products" className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">

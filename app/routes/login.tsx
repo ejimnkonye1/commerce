@@ -1,7 +1,32 @@
-import { Link } from "@remix-run/react"
+import { ActionFunction, json, redirect } from "@remix-run/node"
+import { Form, Link, useActionData } from "@remix-run/react"
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, firestore } from "~/Firebase";
+
+export const action: ActionFunction = async({request}) => {
+  const formData = await request.formData();
+  const email = formData.get('email') as string;
+  const password = formData.get("password") as string;
+
+  try {
+const userCredential = await signInWithEmailAndPassword(auth, email, password)
+const user = userCredential.user
+const userId = user.uid
+ const userDoc = await getDoc(doc(firestore, "users", userId))
+ if (userDoc.exists()){
+  return redirect("/cart")
+ } else{
+  return json ({error: "You are not an authorized user"})
+ }
 
 
+  }catch(error:any){
+    return json({error: error.message}, {status:500});
+  }
+}
 const Login = () => {
+  const actionData = useActionData<{error?: string}>();
     return(
 <section className="">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -10,7 +35,8 @@ const Login = () => {
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Sign in to your account
         </h1>
-        <form className="space-y-4 md:space-y-6" action="#">
+        {actionData?.error && <div className="text-red-500">{actionData.error}</div>}
+        <Form  className="space-y-4 md:space-y-6" method="post" >
           <div>
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Your email
@@ -70,7 +96,7 @@ const Login = () => {
               Sign up
             </Link>
           </p>
-        </form>
+        </Form>
       </div>
     </div>
   </div>
