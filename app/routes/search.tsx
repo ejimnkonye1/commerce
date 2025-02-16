@@ -2,6 +2,7 @@ import { json, LoaderFunction, } from "@remix-run/node";
 
 import initialProducts from "../productimg"; // Import your product data
 import { useLoaderData ,Link} from "@remix-run/react";
+import { useCart } from "~/context/cartcontext";
 
 
 type Product = {
@@ -30,7 +31,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 export default function SearchPage() {
   const { products, query } = useLoaderData<LoaderData>();
-
+  const {  addToCart } = useCart();
   return (
     <div className="container mx-auto px-4 py-10">
       {products.length === 0 ? (
@@ -45,28 +46,46 @@ export default function SearchPage() {
 
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white border rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300"
-          >
-            <div className="flex justify-center border-b p-4">
-              <Link to={`/product/${product.id}`}>
-                <img
-                  src={product.image}
-                  className="w-28 sm:w-32 md:w-36 lg:w-40 object-cover"
-                  alt={product.name}
-                />
-              </Link>
-            </div>
-            <div className="p-4 text-center">
-              <p className="text-lg font-medium">{product.name}</p>
-              <p className="text-green-600 font-semibold text-lg">
-                NGN{product.price}
-              </p>
-            </div>
-          </div>
-        ))}
+          {products.map((product) => (
+                  <div
+                    className="max-w-sm bg-white lg:w-[250px] rounded-lg border border-gray-100 bg-gray-50  dark:border-gray-700 dark:bg-gray-800"
+                    key={product.id}
+                  >
+                    <div className="flex justify-center border-b ">
+                      <Link to={`/products/${product.id}`}>
+                        <img
+                          className=" rounded-t-lg lg:w-[250px] object-cover lg:h-[250px]"
+                          src={product.image}
+                          alt={product.name}
+                        />
+                      </Link>
+                    </div>
+                    <div className="px-5 pb-2 mt-4">
+                      <Link to={`/products/${product.id}`}>
+                        <h5 className="lg:text-md text-sm lg:font-semibold tracking-tight dark:text-white">
+                          {product.name.toUpperCase()}
+                        </h5>
+                      </Link>
+                      <div className="flex items-center flex-col lg:flex-row lg:justify-between hidden lg:flex">
+                        <span className="text-sm font-semibold text-gray-300">₦{product.price}</span>
+                        <button
+                          onClick={() => addToCart(product)}
+                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm lg:px-5 lg:py-2.5 px-2 py-2 text-lg mt-0"
+                        >
+                          Add to cart
+                        </button>
+                      </div>
+                      <div className="lg:hidden block flex-grow">
+                        <p className="text-gray-300 lg:font-semibold text-sm">
+                          <strong>₦{product.price}</strong>
+                        </p>
+                        <div className="text-center mt-4">
+                          <button className="bg-blue-700 text-white text-sm py-2 px-4 rounded">Add to cart</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
       </div>
     </div>
   );

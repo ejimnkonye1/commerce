@@ -32,7 +32,7 @@ const initialProducts = [
     thumbnails: [product2Thumb, product4Thumb, product5Thumb],
     name: "1mp-surveillance",
     price: "10000.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
   
   },
   {
@@ -41,7 +41,7 @@ const initialProducts = [
     thumbnails: [product3Thumb, product6Thumb, product7Thumb],
     name: "a9-mini-camera",
     price: "8000.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
    
   },
   {
@@ -50,7 +50,7 @@ const initialProducts = [
     thumbnails: [product4Thumb, product8Thumb, product1Thumb],
     name: "360-degree-cctv",
     price: "1800.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
   
   },
   {
@@ -59,7 +59,7 @@ const initialProducts = [
     thumbnails: [product5Thumb, product2Thumb, product3Thumb],
     name: "4g-camera",
     price: "8000.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
   
   },
   {
@@ -68,7 +68,7 @@ const initialProducts = [
     thumbnails: [product6Thumb, product4Thumb, product8Thumb],
     name: "2mp-surveillance",
     price: "1800.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
   
   },
   {
@@ -77,7 +77,7 @@ const initialProducts = [
     thumbnails: [product7Thumb, product1Thumb, product5Thumb],
     name: "360-degree-rotation",
     price: "86000.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
     
   },
   {
@@ -86,7 +86,7 @@ const initialProducts = [
     thumbnails: [product8Thumb, product6Thumb, product2Thumb],
     name: "car-gps-tracker",
     price: "6500.00",
-    description: "The phrasal sequence of the Lorem Ipsum text...",
+    description: "This V380 Mini WiFi camera offers high-definition surveillance with remote access, night vision, motion detection, and two-way audio. Ideal for home security and office monitoring.",
    
   },
 ];
