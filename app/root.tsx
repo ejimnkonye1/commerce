@@ -37,14 +37,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {/* <Navbar1 /> */}
-        <Navbar2 />
+        {/* <Navbar2 /> */}
         <main className="pt-[70px] ">
         {children}
         </main>
        
         <ScrollRestoration />
         <Scripts />
-<Footer />
+{/* <Footer /> */}
       </body>
     </html>
   );
@@ -55,7 +55,9 @@ export default function App() {
     <CartProvider>
     <Layout>
       <Navbar1 />
+      <Navbar2 />
       <Outlet />
+      <Footer />
     </Layout>
   </CartProvider>
   ) 

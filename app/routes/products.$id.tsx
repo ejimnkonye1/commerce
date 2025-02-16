@@ -1,6 +1,7 @@
 import { json, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { useEffect, useState } from 'react';
+import { useCart } from '~/context/cartcontext';
 import initialProducts from '~/productimg'; // Assuming this is the correct import path for initialProducts
 
 // Define types for the product and loader parameters
@@ -49,16 +50,10 @@ export default function ProductDetail() {
     setMainImage(src); // Update the main image state
   };
   const [quantity, setQuantity] = useState(1); 
-  const incrementQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
-  };
 
-  // Decrement the quantity, ensuring it's at least 1
-  const decrementQuantity = () => {
-    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-  };
+  const {  addToCart,   updateQuantity } = useCart();
   return (
-    <div className="">
+    <div className="pt-5">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-wrap -mx-4">
           {/* Product Images */}
@@ -104,7 +99,7 @@ export default function ProductDetail() {
 
               <div className="flex items-center justify-between flex space-x-2">
                 <button
-                  onClick={decrementQuantity}
+              onClick={() => updateQuantity(product.id, -1)} 
                   className="text-lg px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
                   aria-label="Decrease Quantity"
                 >
@@ -112,17 +107,18 @@ export default function ProductDetail() {
                 </button>
 
                 <input
-                  type="number"
+                  type="text"
                   id="quantity"
                   name="quantity"
                   min="1"
-                  value={quantity}
+                  value={product.quantity}
+                  onChange={() => setQuantity(product.quantity)}
                   className="w-12 text-center rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                   readOnly
                 />
 
                 <button
-                  onClick={incrementQuantity}
+            onClick={() => updateQuantity(product.id, 1)} 
                   className="text-lg px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
                   aria-label="Increase Quantity"
                 >
@@ -133,7 +129,9 @@ export default function ProductDetail() {
 
 
             <div className="flex space-x-4 mb-6">
-              <button className="bg-indigo-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <button
+              onClick={() => addToCart(product)} 
+              className="bg-indigo-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                 </svg>
